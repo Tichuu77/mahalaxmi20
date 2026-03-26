@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
@@ -19,9 +19,9 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   useEffect(() => {
@@ -106,9 +106,10 @@ export function Navigation() {
         </div>
       </nav>
 
-      {isOpen && (
+      {isOpen ? (
         <>
           <button
+            type="button"
             className="fixed inset-0 z-40 bg-black/45 backdrop-blur-[1px]"
             aria-label="Close menu"
             onClick={() => setIsOpen(false)}
@@ -124,6 +125,7 @@ export function Navigation() {
             <div className="mb-6 flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#30534A]/70">Menu</p>
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#30534A] text-white"
                 aria-label="Close navigation menu"
@@ -154,7 +156,7 @@ export function Navigation() {
             </a>
           </aside>
         </>
-      )}
+      ) : null}
     </>
   )
 }
