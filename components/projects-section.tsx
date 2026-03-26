@@ -75,7 +75,7 @@ type TabValue = (typeof TABS)[number]["value"]
 
 function buildWhatsAppUrl(title: string, location: string): string {
   const text = `Hi, I'm interested in "${title}"${location ? ` at ${location}` : ""}. Could you please share more details?`
-  return `https://wa.me/919970501128?text=${encodeURIComponent(text)}`
+  return `https://wa.me/917276362575?text=${encodeURIComponent(text)}`
 }
 
 const StatusBadge = memo(({ status }: { status: Project["status"] }) => (

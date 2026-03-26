@@ -83,15 +83,15 @@ const CONTACTS = [
   {
     icon: Phone,
     label: "Call / WhatsApp",
-    values: ["+91 9970501128"],
+    values: ["+91 7276362575"],
     dark: true,
   },
-  {
-    icon: Mail,
-    label: "Email",
-    values: ["manoj.mungale@gmail.com"],
-    dark: false,
-  },
+  // {
+  //   icon: Mail,
+  //   label: "Email",
+  //   values: ["manoj.mungale@gmail.com"],
+  //   dark: false,
+  // },
   {
     icon: MapPin,
     label: "Office Address",

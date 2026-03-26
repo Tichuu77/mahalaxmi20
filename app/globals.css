@@ -194,7 +194,7 @@
 .nav__logo-sub  { font-size:9px; color:var(--gold); font-weight:600; letter-spacing:.18em; text-transform:uppercase; margin-top:1px; }
 .nav__links { display:none; align-items:center; gap:4px; }
 @media(min-width:768px){ .nav__links { display:flex; } }
-.nav__link { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:500; color:rgba(255,255,255,.7); transition:background .2s,color .2s; }
+.nav__link { padding:6px 14px; border-radius:999px; font-size:13px; font-weight:500; color:rgb(253, 84, 6); transition:background .2s,color .2s; }
 .nav__link:hover { background:rgba(201,134,43,.15); color:var(--gold); }
 .nav__cta { display:none; }
 @media(min-width:768px){ .nav__cta { display:inline-block; } }
@@ -391,7 +391,7 @@
 .projects { background:var(--green-dark); }
 .projects__header { display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:clamp(1.5rem,3vw,2rem); margin-bottom:clamp(1.5rem,3vw,2.5rem); }
 .projects__tabs { display:flex; flex-wrap:wrap; gap:8px; }
-.projects__tab  { padding:8px 18px; border-radius:999px; border:1.5px solid rgba(255,255,255,.12); background:transparent; font-size:12px; font-weight:700; letter-spacing:.04em; color:rgba(255,255,255,.5); transition:all .2s; }
+.projects__tab  { padding:8px 18px; border-radius:999px; border:1.5px solid rgba(255,255,255,.12); background:transparent; font-size:12px; font-weight:700; letter-spacing:.04em; color:rgb(248, 100, 1); transition:all .2s; }
 .projects__tab:hover  { border-color:rgba(201,134,43,.5); color:var(--gold); }
 .projects__tab.active { background:var(--gold); border-color:var(--gold); color:#fff; box-shadow:0 6px 20px rgba(201,134,43,.35); }
 
@@ -1583,17 +1583,14 @@ main > section {
     linear-gradient(180deg, #f8f6f2 0%, #ffffff 35%, #f6f9f8 100%);
 }
 
-.site-refresh main {
-  padding-top: clamp(6.5rem, 9vw, 8rem);
-}
-
+ 
 .site-refresh main > section.revamp {
   position: relative;
   max-width: 1320px;
   margin: clamp(1rem, 2vw, 1.6rem) auto;
   border: 1px solid rgba(48,83,74,.14);
   border-radius: 28px;
-  overflow: clip;
+  overflow: visible;
   box-shadow: 0 16px 38px rgba(11, 22, 18, .08);
   background: linear-gradient(180deg, #ffffff 0%, #f9fbfa 100%);
 }
@@ -1668,13 +1665,11 @@ main > section {
   margin: 1.2rem auto 1.8rem;
   border-radius: 28px;
   border: 1px solid rgba(48,83,74,.16);
-  overflow: clip;
+  overflow: visible;
 }
 
 @media (max-width: 767px) {
-  .site-refresh main {
-    padding-top: 5.8rem;
-  }
+   
 
   .site-refresh main > section.revamp,
   .site-refresh .footer.revamp {

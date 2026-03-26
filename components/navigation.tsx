@@ -33,7 +33,7 @@ export function Navigation() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 refresh-v3 refresh-v3--nav">
+      <header className="fixed inset-x-0 top-0 z-50  sm:px-6 refresh-v3 refresh-v3--nav">
         <div
           className={`mx-auto max-w-7xl rounded-2xl border transition-all duration-300 ${
             scrolled
@@ -44,11 +44,11 @@ export function Navigation() {
           <div className="flex items-center gap-3 px-4 py-3 sm:px-6">
             <a href="#" aria-label="Mahalaxmi Infra – Home" className="flex items-center gap-3">
               <img
-                src="/Malaxmi-Final-Logo-1.png"
+                src="/Mahalaxmi Infra new Logo.png"
                 alt="Mahalaxmi Infra Logo"
                 width={44}
                 height={44}
-                className="h-11 w-11 rounded-xl border border-white/20 bg-white p-1"
+                className="h-11 w-11 md:h-14 md:w-14 rounded-xl border border-white/20 bg-white p-1"
                 fetchPriority="high"
                 decoding="sync"
               />
@@ -69,7 +69,7 @@ export function Navigation() {
                   href={link.href}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     scrolled
-                      ? "text-[#30534A] hover:bg-[#30534A] hover:text-white"
+                      ? "text-[#30534A] hover:bg-[#30534A] hover:text-black"
                       : "text-white hover:bg-white hover:text-[#30534A]"
                   }`}
                 >
@@ -104,7 +104,7 @@ export function Navigation() {
             </div>
           </div>
         </div>
-      </nav>
+      </header>
 
       {isOpen && (
         <>
@@ -139,7 +139,7 @@ export function Navigation() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block rounded-xl border border-[#30534A]/15 px-4 py-3 text-base font-semibold text-[#30534A] transition hover:bg-[#30534A] hover:text-white"
+                  className="block rounded-xl border border-[#30534A]/15 px-4 py-3 text-base font-semibold text-[#30534A] transition hover:bg-[#30534A] hover:text-black"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}

@@ -2,9 +2,9 @@
 
 export default function WhatsappButton() {
   return (
-    <div className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 revamp-fab revamp-fab--whatsapp refresh-v3 refresh-v3--whatsapp">
+    <div className="fixed bottom-6 right-6 z-40 sm:bottom-8 sm:right-8">
       <a
-        href="https://wa.me/+919970501128?text=Enquiry for more details"
+        href="https://wa.me/+917276362575?text=Enquiry for more details"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
