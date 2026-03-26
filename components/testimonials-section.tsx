@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useRef, useCallback, memo } from "react"
-import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import { useState, useEffect, useRef, useCallback } from "react"
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
 
 const testimonials = [
   {
@@ -35,28 +35,19 @@ const testimonials = [
 
 const TOTAL = testimonials.length
 
-const RATING_WIDTHS = [
-  "rating-bar-w5",
-  "rating-bar-w4",
-  "rating-bar-w3",
-  "rating-bar-w2",
-  "rating-bar-w1",
-]
-
-const Stars = memo(({ count }: { count: number }) => (
-  <div className="stars" aria-label={`${count} out of 5 stars`}>
+const Stars = ({ count }: { count: number }) => (
+  <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
     {Array.from({ length: count }).map((_, i) => (
-      <Star key={i} size={12} className="star-filled" aria-hidden="true" />
+      <Star key={i} size={14} className="fill-[#C9862b] text-[#C9862b]" />
     ))}
   </div>
-))
-Stars.displayName = "Stars"
+)
 
 export function TestimonialsSection() {
-  const [current, setCurrent]     = useState(0)
-  const [autoplay, setAutoplay]   = useState(true)
+  const [current, setCurrent] = useState(0)
+  const [autoplay, setAutoplay] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
-  const sectionRef  = useRef<HTMLElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
@@ -69,7 +60,7 @@ export function TestimonialsSection() {
           hasAnimated.current = true
         }
       },
-      { threshold: 0.07 },
+      { threshold: 0.07 }
     )
     obs.observe(el)
     return () => obs.disconnect()
@@ -77,17 +68,17 @@ export function TestimonialsSection() {
 
   useEffect(() => {
     if (!autoplay) return
-    const id = setInterval(() => setCurrent(p => (p + 1) % TOTAL), 5200)
+    const id = setInterval(() => setCurrent((p) => (p + 1) % TOTAL), 5200)
     return () => clearInterval(id)
   }, [autoplay])
 
   const prev = useCallback(() => {
-    setCurrent(p => (p - 1 + TOTAL) % TOTAL)
+    setCurrent((p) => (p - 1 + TOTAL) % TOTAL)
     setAutoplay(false)
   }, [])
 
   const next = useCallback(() => {
-    setCurrent(p => (p + 1) % TOTAL)
+    setCurrent((p) => (p + 1) % TOTAL)
     setAutoplay(false)
   }, [])
 
@@ -96,81 +87,122 @@ export function TestimonialsSection() {
     setAutoplay(false)
   }, [])
 
-  const vis    = isVisible
   const active = testimonials[current]
 
   return (
-    <section ref={sectionRef} id="testimonials" aria-label="Customer Testimonials" className="testimonials revamp revamp--testimonials refresh-v3 refresh-v3--testimonials">
-      <div className="dot-bg dot-bg--dark" />
-      <div className="label-strip label-strip--dark">
-        <div className="label-strip__line" />
-        <span className="label-strip__text">Testimonials</span>
-        <div className="label-strip__fill" />
-        <span className="label-strip__right">17,000+ Happy Families</span>
+    <section
+      ref={sectionRef}
+      id="testimonials"
+      aria-label="Customer Testimonials"
+      className="relative overflow-hidden bg-[#0d1a16] py-16 sm:py-20 lg:py-24"
+    >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute inset-0 opacity-50"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="absolute left-1/4 top-1/4 h-[400px] w-[400px] rounded-full bg-[#30534A]/20 blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 h-[300px] w-[300px] rounded-full bg-[#C9862b]/10 blur-[80px]" />
       </div>
 
-      <div className="section-inner">
-        <div className={`rv ${vis ? "on" : ""} d0 mb-section`}>
-          <div className="section-eyebrow">
-            <div className="section-eyebrow__line" />
-            <span className="section-eyebrow__label">Real Stories</span>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div
+          className={`mb-12 text-center transition-all duration-700 lg:mb-16 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#C9862b]/20 bg-[#C9862b]/10 px-4 py-2">
+            <div className="h-1.5 w-6 rounded-full bg-gradient-to-r from-[#C9862b] to-[#C9862b]/50" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C9862b]">Real Stories</span>
           </div>
-          <h2 id="testimonials-heading" className="section-heading section-heading--white">
-            Words from Our <em>Happy</em><br />
-            <span className="green">Families</span>
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            Words from Our <span className="text-[#C9862b]">Happy</span>
+            <br />
+            <span className="text-white/30">Families</span>
           </h2>
         </div>
 
-        <div className="testimonials__layout">
-          {/* Active quote */}
-          <div className={`rv ${vis ? "on" : ""} d1`}>
+        {/* Main Content */}
+        <div className="grid gap-8 lg:grid-cols-5 lg:gap-12">
+          {/* Active Quote Card */}
+          <div
+            className={`lg:col-span-3 transition-all delay-100 duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
             <blockquote
               key={active.id}
-              className="testimonials__quote"
+              className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8 lg:p-10"
               aria-label={`Testimonial from ${active.name}`}
             >
-              <div className="testimonials__quote-mark" aria-hidden="true">"</div>
-              <div className="testimonials__quote-glow" aria-hidden="true" />
-              <div className="testimonials__quote-line" aria-hidden="true" />
-              <Stars count={active.rating} />
-              <p className="testimonials__quote-text">"{active.content}"</p>
-              <footer className="testimonials__quote-author">
-                <div className="testimonials__quote-avatar-wrap">
-                  <img
-                    src={active.image}
-                    alt={active.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="testimonials__quote-avatar"
-                    width={46}
-                    height={46}
-                  />
-                  <div className="testimonials__quote-online" aria-hidden="true" />
+              {/* Quote Icon */}
+              <div className="absolute -right-4 -top-4 opacity-10">
+                <Quote size={120} className="text-[#C9862b]" />
+              </div>
+
+              {/* Glow */}
+              <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#C9862b]/10 blur-3xl" />
+
+              <div className="relative">
+                {/* Stars */}
+                <div className="mb-6">
+                  <Stars count={active.rating} />
                 </div>
-                <div>
-                  <p className="testimonials__quote-name">{active.name}</p>
-                  <p className="testimonials__quote-loc">
-                    {active.location} · Verified Buyer
-                  </p>
-                </div>
-              </footer>
+
+                {/* Quote Text */}
+                <p className="mb-8 text-lg leading-relaxed text-white/80 sm:text-xl lg:text-2xl">
+                  &ldquo;{active.content}&rdquo;
+                </p>
+
+                {/* Author */}
+                <footer className="flex items-center gap-4">
+                  <div className="relative">
+                    <img
+                      src={active.image}
+                      alt={active.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-14 w-14 rounded-2xl object-cover"
+                      width={56}
+                      height={56}
+                    />
+                    <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-[#0d1a16] bg-[#30534A]" />
+                  </div>
+                  <div>
+                    <p className="text-base font-bold text-white">{active.name}</p>
+                    <p className="text-sm text-white/50">{active.location} - Verified Buyer</p>
+                  </div>
+                </footer>
+              </div>
             </blockquote>
 
-            <div className="testimonials__nav" role="group" aria-label="Testimonial navigation">
-              <button
-                onClick={prev}
-                aria-label="Previous testimonial"
-                className="testimonials__nav-btn"
-                type="button"
-              >
-                <ChevronLeft size={17} />
-              </button>
+            {/* Navigation */}
+            <div className="mt-6 flex items-center justify-between">
+              <div className="flex gap-2">
+                <button
+                  onClick={prev}
+                  aria-label="Previous testimonial"
+                  className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 text-white transition-all hover:bg-white/10"
+                  type="button"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Next testimonial"
+                  className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 text-white transition-all hover:bg-white/10"
+                  type="button"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
 
-              <div
-                className="testimonials__dots"
-                role="tablist"
-                aria-label="Testimonials"
-              >
+              <div className="flex gap-2" role="tablist" aria-label="Testimonials">
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
@@ -178,38 +210,35 @@ export function TestimonialsSection() {
                     aria-selected={i === current}
                     aria-label={`Testimonial ${i + 1}`}
                     onClick={() => goTo(i)}
-                    className={`testimonials__dot${i === current ? " active" : ""}`}
+                    className={`h-2 rounded-full transition-all ${
+                      i === current ? "w-8 bg-[#C9862b]" : "w-2 bg-white/30 hover:bg-white/50"
+                    }`}
                     type="button"
                   />
                 ))}
               </div>
-
-              <button
-                onClick={next}
-                aria-label="Next testimonial"
-                className="testimonials__nav-btn"
-                type="button"
-              >
-                <ChevronRight size={17} />
-              </button>
             </div>
           </div>
 
-          {/* Right column */}
-          <div className={`rv ${vis ? "on" : ""} d2 testimonials__right`}>
-            {/* Picker */}
-            <div
-              className="testimonials__picker"
-              role="tablist"
-              aria-label="Select testimonial"
-            >
+          {/* Right Side - Picker & Rating */}
+          <div
+            className={`lg:col-span-2 space-y-4 transition-all delay-200 duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            {/* Testimonial Picker */}
+            <div className="space-y-3" role="tablist" aria-label="Select testimonial">
               {testimonials.map((t, i) => (
                 <button
                   key={t.id}
                   role="tab"
                   aria-selected={i === current}
                   onClick={() => goTo(i)}
-                  className={`testimonials__pick-btn testimonials__pick-btn--${i === current ? "active" : "inactive"}`}
+                  className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all ${
+                    i === current
+                      ? "border-[#C9862b]/30 bg-[#C9862b]/10"
+                      : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
+                  }`}
                   type="button"
                 >
                   <img
@@ -217,62 +246,66 @@ export function TestimonialsSection() {
                     alt={t.name}
                     loading="lazy"
                     decoding="async"
-                    className={`testimonials__pick-avatar testimonials__pick-avatar--${i === current ? "active" : "inactive"}`}
-                    width={36}
-                    height={36}
+                    className={`h-12 w-12 rounded-xl object-cover transition-all ${
+                      i === current ? "ring-2 ring-[#C9862b]" : ""
+                    }`}
+                    width={48}
+                    height={48}
                   />
-                  <div className="testimonials__pick-text">
-                    <p className={`testimonials__pick-name testimonials__pick-name--${i === current ? "active" : "inactive"}`}>
-                      {t.name}
-                    </p>
-                    <p className={`testimonials__pick-loc testimonials__pick-loc--${i === current ? "active" : "inactive"}`}>
-                      {t.location}
-                    </p>
+                  <div className="flex-1">
+                    <p className={`font-bold ${i === current ? "text-white" : "text-white/70"}`}>{t.name}</p>
+                    <p className={`text-sm ${i === current ? "text-white/60" : "text-white/40"}`}>{t.location}</p>
                   </div>
                   <Stars count={t.rating} />
                 </button>
               ))}
             </div>
 
-            {/* Rating summary */}
-            <div className="testimonials__rating" aria-label="Overall rating">
-              <div className="testimonials__rating-top">
-                <div className="testimonials__rating-score" aria-label="5 out of 5">
-                  5.0
-                </div>
+            {/* Rating Summary */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="mb-4 flex items-center gap-4">
+                <span className="text-5xl font-bold text-white">5.0</span>
                 <div>
                   <Stars count={5} />
-                  <p className="testimonials__rating-sub">Based on 500+ reviews</p>
+                  <p className="mt-1 text-xs text-white/50">Based on 500+ reviews</p>
                 </div>
               </div>
 
-              {[5, 4, 3, 2, 1].map((n, i) => (
-                <div key={n} className="testimonials__rating-bar">
-                  <span className="testimonials__rating-bar-num">{n}</span>
-                  <Star size={9} className="star-filled" aria-hidden="true" />
-                  <div className="testimonials__rating-bar-track">
-                    <div
-                      className={`testimonials__rating-bar-fill ${RATING_WIDTHS[i]}`}
-                      role="presentation"
-                    />
-                  </div>
-                </div>
-              ))}
+              {/* Rating Bars */}
+              <div className="space-y-2">
+                {[5, 4, 3, 2, 1].map((n, i) => {
+                  const widths = ["w-full", "w-1/5", "w-0", "w-0", "w-0"]
+                  return (
+                    <div key={n} className="flex items-center gap-2">
+                      <span className="w-3 text-xs text-white/50">{n}</span>
+                      <Star size={10} className="fill-[#C9862b] text-[#C9862b]" />
+                      <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/10">
+                        <div className={`h-full rounded-full bg-[#C9862b] ${widths[i]}`} />
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="trust-bar trust-bar--dark">
-        <div className="trust-bar__inner">
-          <p className="trust-bar__label">Every word, a true story</p>
-          <div className="trust-bar__items">
-            {["Verified Reviews", "Real Families", "No Paid Promotions"].map(label => (
-              <div key={label} className="trust-bar__item">
-                <div className="trust-bar__dot" />
-                <span className="trust-bar__name">{label}</span>
-              </div>
-            ))}
+        {/* Trust Bar */}
+        <div
+          className={`mt-12 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all delay-300 duration-700 sm:p-6 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/40">Every word, a true story</p>
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+              {["Verified Reviews", "Real Families", "No Paid Promotions"].map((label) => (
+                <div key={label} className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#C9862b]" />
+                  <span className="text-xs font-semibold text-white/60">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

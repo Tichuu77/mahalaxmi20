@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useRef, useEffect, useCallback, memo } from "react"
-import { ChevronDown, ExternalLink } from "lucide-react"
+import { useState, useRef, useEffect, useCallback } from "react"
+import { ChevronDown, ExternalLink, Calendar, Clock } from "lucide-react"
 
 const newsArticles = [
   {
@@ -13,7 +13,7 @@ const newsArticles = [
     image: "/gallery1.jpg",
     summary: "With AIIMS, IT parks, and logistics hubs expanding along the MIHAN belt, plot demand has surged 35% year-on-year.",
     content:
-      "The MIHAN Special Economic Zone on Nagpur's Wardha Road has transformed from an ambitious blueprint into a live economic engine. Anchored by AIIMS Nagpur, an expanding cargo hub, and several multinational manufacturing units, the corridor now attracts both end-users and investors. Property prices in MIHAN-adjacent areas have appreciated between 18–35% since 2022, making early movers significant beneficiaries.",
+      "The MIHAN Special Economic Zone on Nagpur's Wardha Road has transformed from an ambitious blueprint into a live economic engine. Anchored by AIIMS Nagpur, an expanding cargo hub, and several multinational manufacturing units, the corridor now attracts both end-users and investors. Property prices in MIHAN-adjacent areas have appreciated between 18-35% since 2022, making early movers significant beneficiaries.",
   },
   {
     id: 2,
@@ -33,9 +33,9 @@ const newsArticles = [
     category: "Finance",
     readTime: "5 min",
     image: "/gallery3.jpg",
-    summary: "Leading banks now offer up to 90% LTV on NMRDA-approved residential plots — here's how to qualify.",
+    summary: "Leading banks now offer up to 90% LTV on NMRDA-approved residential plots - here's how to qualify.",
     content:
-      "Plot loan rates have stabilised, with most public sector banks offering between 8.5–9.2% for NMRDA/RERA approved plots. Mahalaxmi Infra's projects qualify with SBI, Bank of Maharashtra, and Axis Bank.",
+      "Plot loan rates have stabilised, with most public sector banks offering between 8.5-9.2% for NMRDA/RERA approved plots. Mahalaxmi Infra's projects qualify with SBI, Bank of Maharashtra, and Axis Bank.",
   },
   {
     id: 4,
@@ -50,160 +50,10 @@ const newsArticles = [
   },
 ]
 
-const CategoryBadge = memo(({ category }: { category: string }) => (
-  <span className="news-cat">{category}</span>
-))
-CategoryBadge.displayName = "CategoryBadge"
-
-const FeaturedCard = memo(({
-  article,
-  isOpen,
-  onToggle,
-}: {
-  article: typeof newsArticles[0]
-  isOpen: boolean
-  onToggle: (id: number) => void
-}) => (
-  <article className="news-feat" aria-label={article.title}>
-    <div className="news-feat__img-wrap">
-      <img
-        src={article.image}
-        alt={article.title}
-        loading="lazy"
-        decoding="async"
-        className="news-feat__img"
-      />
-      <div className="news-feat__img-overlay" aria-hidden="true" />
-      <div className="news-feat__img-meta">
-        <CategoryBadge category={article.category} />
-        <span className="news-feat__img-read">{article.readTime} read · {article.date}</span>
-      </div>
-    </div>
-    <div className="news-feat__body">
-      <h3 className="news-feat__title">{article.title}</h3>
-      <p className="news-feat__summary">{article.summary}</p>
-      <button
-        onClick={() => onToggle(article.id)}
-        className="news-feat__expand"
-        aria-expanded={isOpen}
-        type="button"
-      >
-        <span className="news-feat__expand-label">
-          {isOpen ? "Read Less" : "Read More"}
-        </span>
-        <ExternalLink size={11} className="icon-green" aria-hidden="true" />
-      </button>
-      {isOpen && <p className="news-feat__content">{article.content}</p>}
-    </div>
-    <div className="news-feat__bar" aria-hidden="true" />
-  </article>
-))
-FeaturedCard.displayName = "FeaturedCard"
-
-const SideCard = memo(({
-  article,
-  isOpen,
-  onToggle,
-}: {
-  article: typeof newsArticles[0]
-  isOpen: boolean
-  onToggle: (id: number) => void
-}) => (
-  <article className="news-side" aria-label={article.title}>
-    <div className="news-side__img-wrap">
-      <img
-        src={article.image}
-        alt={article.title}
-        loading="lazy"
-        decoding="async"
-        className="news-side__img"
-      />
-      <div className="news-side__img-badge">
-        <CategoryBadge category={article.category} />
-      </div>
-    </div>
-    <div className="news-side__body">
-      <span className="news-side__date">{article.readTime} read · {article.date}</span>
-      <h3 className="news-side__title">{article.title}</h3>
-      <button
-        onClick={() => onToggle(article.id)}
-        className="news-side__expand"
-        aria-expanded={isOpen}
-        type="button"
-      >
-        <span className="news-side__expand-label">
-          {isOpen ? "Collapse" : "Read More"}
-        </span>
-        <ChevronDown
-          size={10}
-          className={`icon-green chevron-down${isOpen ? " open" : ""}`}
-          aria-hidden="true"
-        />
-      </button>
-      {isOpen && <p className="news-side__content">{article.content}</p>}
-    </div>
-    <div className="news-side__bar" aria-hidden="true" />
-  </article>
-))
-SideCard.displayName = "SideCard"
-
-const MobCard = memo(({
-  article,
-  index,
-  visible,
-  isOpen,
-  onToggle,
-}: {
-  article: typeof newsArticles[0]
-  index: number
-  visible: boolean
-  isOpen: boolean
-  onToggle: (id: number) => void
-}) => (
-  <article
-    className={`news-mob-card stagger-item${visible ? " on" : ""} s${index}`}
-    aria-label={article.title}
-  >
-    <button
-      onClick={() => onToggle(article.id)}
-      className="news-mob-card__btn"
-      aria-expanded={isOpen}
-      type="button"
-    >
-      <img
-        src={article.image}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="news-mob-card__thumb"
-        aria-hidden="true"
-      />
-      <div className="pick-text">
-        <CategoryBadge category={article.category} />
-        <p className="news-mob-card__title">{article.title}</p>
-      </div>
-      <ChevronDown
-        size={13}
-        className={`news-mob-card__chevron chevron-down${isOpen ? " open" : ""}`}
-        aria-hidden="true"
-      />
-    </button>
-
-    {isOpen && (
-      <div className="news-mob-card__content">
-        <p className="news-mob-card__text">{article.content}</p>
-      </div>
-    )}
-
-    <div className={`news-mob-card__bar${isOpen ? " open" : ""}`} aria-hidden="true" />
-  </article>
-))
-MobCard.displayName = "MobCard"
-
 export default function NewsArticles() {
   const [expandedId, setExpandedId] = useState<number | null>(null)
-  const [isVisible, setIsVisible]   = useState(false)
-  const sectionRef  = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
@@ -216,88 +66,201 @@ export default function NewsArticles() {
           hasAnimated.current = true
         }
       },
-      { threshold: 0.07 },
+      { threshold: 0.07 }
     )
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
-  const toggle = useCallback(
-    (id: number) => setExpandedId(p => (p === id ? null : id)),
-    [],
-  )
+  const toggle = useCallback((id: number) => setExpandedId((p) => (p === id ? null : id)), [])
 
-  const vis = isVisible
   const [featured, ...sides] = newsArticles
 
   return (
-    <section ref={sectionRef} id="news" aria-label="News and Articles" className="news revamp revamp--news refresh-v3 refresh-v3--news">
-      <div className="label-strip">
-        <div className="label-strip__line" />
-        <span className="label-strip__text">Latest Updates</span>
-        <div className="label-strip__fill" />
-        <span className="label-strip__right">News &amp; Articles</span>
+    <section
+      ref={sectionRef}
+      id="news"
+      aria-label="News and Articles"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+    >
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-[#30534A]/5 blur-[100px]" />
+        <div className="absolute -right-32 bottom-0 h-[400px] w-[400px] rounded-full bg-[#C9862b]/5 blur-[80px]" />
       </div>
 
-      <div className="section-inner">
-        <div className={`rv ${vis ? "on" : ""} d0 mb-section`}>
-          <div className="section-eyebrow">
-            <div className="section-eyebrow__line" />
-            <span className="section-eyebrow__label">From the Desk</span>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div
+          className={`mb-12 text-center transition-all duration-700 lg:mb-16 lg:text-left ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#C9862b]/20 bg-[#C9862b]/10 px-4 py-2">
+            <div className="h-1.5 w-6 rounded-full bg-gradient-to-r from-[#C9862b] to-[#C9862b]/50" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C9862b]">From the Desk</span>
           </div>
-          <h2 id="news-heading" className="section-heading">
-            News <em>&amp;</em><br /><span>Articles</span>
+          <h2 className="mb-4 text-3xl font-bold text-[#0d1a16] sm:text-4xl lg:text-5xl">
+            News <span className="text-[#30534A]">&</span>
+            <br />
+            <span className="text-[#C9862b]">Articles</span>
           </h2>
-          <p className="section-sub">
-            Stay updated with the latest news, project launches, and insights
-            from Mahalaxmi Infra.
+          <p className="mx-auto max-w-lg text-base leading-relaxed text-[#666] lg:mx-0">
+            Stay updated with the latest news, project launches, and insights from Mahalaxmi Infra.
           </p>
         </div>
 
-        {/* Desktop layout */}
-        <div className={`news__desk rv ${vis ? "on" : ""} d1`}>
-          <FeaturedCard
-            article={featured}
-            isOpen={expandedId === featured.id}
-            onToggle={toggle}
-          />
-          <div className="news__sides">
-            {sides.map(a => (
-              <SideCard
-                key={a.id}
-                article={a}
-                isOpen={expandedId === a.id}
-                onToggle={toggle}
+        {/* Desktop Layout */}
+        <div
+          className={`hidden gap-6 lg:grid lg:grid-cols-2 transition-all delay-100 duration-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          {/* Featured Article */}
+          <article className="group overflow-hidden rounded-3xl border border-[#30534A]/10 bg-[#f7f4ef] transition-all duration-300 hover:shadow-xl">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src={featured.image}
+                alt={featured.title}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <span className="rounded-full bg-[#C9862b] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                  {featured.category}
+                </span>
+                <div className="flex items-center gap-3 text-xs text-white/70">
+                  <span className="flex items-center gap-1">
+                    <Clock size={12} /> {featured.readTime}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Calendar size={12} /> {featured.date}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="p-6">
+              <h3 className="mb-3 text-xl font-bold text-[#0d1a16] group-hover:text-[#30534A]">{featured.title}</h3>
+              <p className="mb-4 text-sm leading-relaxed text-[#666]">{featured.summary}</p>
+              <button
+                onClick={() => toggle(featured.id)}
+                className="inline-flex items-center gap-2 text-sm font-bold text-[#30534A] hover:text-[#C9862b]"
+                type="button"
+              >
+                {expandedId === featured.id ? "Read Less" : "Read More"}
+                <ExternalLink size={14} />
+              </button>
+              {expandedId === featured.id && (
+                <p className="mt-4 text-sm leading-relaxed text-[#555]">{featured.content}</p>
+              )}
+            </div>
+          </article>
+
+          {/* Side Articles */}
+          <div className="space-y-4">
+            {sides.map((article) => (
+              <article
+                key={article.id}
+                className="group flex gap-4 overflow-hidden rounded-2xl border border-[#30534A]/10 bg-[#f7f4ef] p-4 transition-all duration-300 hover:border-[#C9862b]/30 hover:shadow-lg"
+              >
+                <div className="relative aspect-square w-24 shrink-0 overflow-hidden rounded-xl">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <span className="absolute bottom-1 left-1 rounded bg-[#C9862b]/90 px-1.5 py-0.5 text-[8px] font-bold uppercase text-white">
+                    {article.category}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col">
+                  <div className="mb-2 flex items-center gap-2 text-[10px] text-[#888]">
+                    <span>{article.readTime} read</span>
+                    <span>-</span>
+                    <span>{article.date}</span>
+                  </div>
+                  <h3 className="mb-2 text-sm font-bold text-[#0d1a16] group-hover:text-[#30534A]">{article.title}</h3>
+                  <button
+                    onClick={() => toggle(article.id)}
+                    className="mt-auto inline-flex items-center gap-1 text-xs font-bold text-[#30534A] hover:text-[#C9862b]"
+                    type="button"
+                  >
+                    {expandedId === article.id ? "Collapse" : "Read More"}
+                    <ChevronDown
+                      size={12}
+                      className={`transition-transform ${expandedId === article.id ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  {expandedId === article.id && (
+                    <p className="mt-3 text-xs leading-relaxed text-[#555]">{article.content}</p>
+                  )}
+                </div>
+              </article>
             ))}
           </div>
         </div>
 
-        {/* Mobile layout */}
-        <div className="news__mob">
-          {newsArticles.map((a, i) => (
-            <MobCard
-              key={a.id}
-              article={a}
-              index={i}
-              visible={vis}
-              isOpen={expandedId === a.id}
-              onToggle={toggle}
-            />
+        {/* Mobile Layout */}
+        <div className="space-y-4 lg:hidden">
+          {newsArticles.map((article, index) => (
+            <article
+              key={article.id}
+              className={`overflow-hidden rounded-2xl border border-[#30534A]/10 bg-[#f7f4ef] transition-all duration-500 ${
+                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <button
+                onClick={() => toggle(article.id)}
+                className="flex w-full items-center gap-4 p-4 text-left"
+                type="button"
+              >
+                <img
+                  src={article.image}
+                  alt=""
+                  loading="lazy"
+                  className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                />
+                <div className="flex-1">
+                  <span className="mb-1 inline-block rounded-full bg-[#C9862b]/10 px-2 py-0.5 text-[9px] font-bold uppercase text-[#C9862b]">
+                    {article.category}
+                  </span>
+                  <h3 className="text-sm font-bold text-[#0d1a16]">{article.title}</h3>
+                </div>
+                <ChevronDown
+                  size={18}
+                  className={`shrink-0 text-[#30534A] transition-transform ${
+                    expandedId === article.id ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              {expandedId === article.id && (
+                <div className="border-t border-[#30534A]/10 px-4 pb-4 pt-3">
+                  <p className="text-sm leading-relaxed text-[#555]">{article.content}</p>
+                </div>
+              )}
+            </article>
           ))}
         </div>
-      </div>
 
-      <div className="trust-bar">
-        <div className="trust-bar__inner">
-          <p className="trust-bar__label">Real insights. Expert advice.</p>
-          <div className="trust-bar__items">
-            {["Market Updates", "Legal Guides", "Finance Tips"].map(label => (
-              <div key={label} className="trust-bar__item">
-                <div className="trust-bar__dot" />
-                <span className="trust-bar__name">{label}</span>
-              </div>
-            ))}
+        {/* Trust Bar */}
+        <div
+          className={`mt-12 rounded-2xl bg-[#30534A] p-4 transition-all delay-300 duration-700 sm:p-6 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Real insights. Expert advice.</p>
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+              {["Market Updates", "Legal Guides", "Finance Tips"].map((label) => (
+                <div key={label} className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#C9862b]" />
+                  <span className="text-xs font-semibold text-white/70">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
