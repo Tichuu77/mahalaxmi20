@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Poppins, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
@@ -68,6 +68,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: BASE_URL,
   },
+  category: "Real Estate",
   robots: {
     index: true,
     follow: true,
@@ -86,16 +87,31 @@ export const metadata: Metadata = {
     "plots for sale in Nagpur",
     "NMRDA approved plots Nagpur",
     "RERA approved plots Nagpur",
-    "residential plots Nagpur",
-    "plots near MIHAN Nagpur",
-    "plots Wardha Road Nagpur",
-    "plots near AIIMS Nagpur",
-    "property in Nagpur",
-    "buy plot Nagpur",
-    "bank loan plots Nagpur",
-    "affordable plots Nagpur",
-    "Mahalaxmi Nagar Nagpur",
+    "Government sanctioned layout Nagpur",
+    "Clear title plots in Nagpur",
+    "Bank loan available plots Nagpur",
+    "Affordable plots in Nagpur",
+    "Best plots in Nagpur",
+    "Ready to register plots Nagpur",
+    "Nagpur flats for sale",
+    "2 BHK flats in Nagpur",
+    "Affordable flats in Nagpur",
+    "House for sale in Nagpur",
+    "House for sale in Manish Nagar Nagpur",
+    "Commercial property in Nagpur",
+    "Plots in Kamptee Nagpur",
+    "Kamptee Road property",
+    "Investment property in Nagpur",
+    "Budget homes Nagpur",
   ],
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+  themeColor: "#30534A",
 }
 
 const structuredData = {
@@ -216,9 +232,9 @@ export default function RootLayout({
         <meta name="geo.placename" content="Nagpur" />
         <meta name="geo.position" content="21.1458;79.0882" />
         <meta name="ICBM" content="21.1458, 79.0882" />
-        {/* Preconnect for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
         {/* GTM noscript */}
