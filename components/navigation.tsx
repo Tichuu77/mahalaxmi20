@@ -84,7 +84,7 @@ export function Navigation() {
             </button>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* Mobile drawer */}
       {isOpen && (
