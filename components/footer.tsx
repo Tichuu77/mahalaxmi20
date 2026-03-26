@@ -21,10 +21,10 @@ const contacts = [
 ]
 
 export const Footer = memo(() => (
-  <footer className="footer" aria-label="Site footer">
-    <div className="footer__dot-bg" aria-hidden="true" />
-    <div className="footer__glow-1" aria-hidden="true" />
-    <div className="footer__glow-2" aria-hidden="true" />
+  <footer className="footer revamp revamp--footer" aria-label="Footer">
+    <div className="footer__dot-bg" />
+    <div className="footer__glow-1" />
+    <div className="footer__glow-2" />
 
     <div className="footer__inner">
       <div className="footer__grid">

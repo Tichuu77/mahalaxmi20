@@ -77,12 +77,8 @@ export function AboutSection() {
   const vis = isVisible
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      aria-labelledby="about-heading"
-      className="about"
-    >
+    <section id="about" ref={sectionRef} aria-label="About Mahalaxmi Infra" className="about revamp revamp--about">
+      {/* Label strip */}
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">About Us</span>

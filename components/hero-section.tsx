@@ -27,22 +27,17 @@ export function HeroSection() {
   const L = loaded
 
   return (
-    <section
-      id="home"
-      aria-labelledby="hero-heading"
-      className="hero"
-    >
-      {/* Background layers */}
-      <div className="hero__bg" aria-hidden="true" />
-      <div className="hero__glow-1" aria-hidden="true" />
-      <div className="hero__glow-2" aria-hidden="true" />
+    <section id="home" aria-label="Mahalaxmi Infra – Premium Plots in Nagpur" className="hero revamp revamp--hero">
+      <div className="hero__bg" />
+      <div className="hero__glow-1" />
+      <div className="hero__glow-2" />
 
       <div className="hero__inner">
         <div className="hero__grid">
-          {/* ── Text column ─────────────────────────── */}
-          <div>
-            <div className={`rv ${L ? "on" : ""} d0 hero__eyebrow`}>
-              <MapPin size={11} className="hero__eyebrow-icon" aria-hidden="true" />
+          {/* Text column */}
+          <div className="hero__content">
+            <div className={`rv ${L?"on":""} d0 hero__eyebrow`}>
+              <MapPin size={12} className="hero__eyebrow-icon" aria-hidden="true" />
               <span className="hero__eyebrow-text">Nagpur, Maharashtra</span>
             </div>
 

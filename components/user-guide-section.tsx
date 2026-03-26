@@ -228,14 +228,8 @@ export function UserGuideSection() {
   const vis = isVisible
 
   return (
-    <section
-      ref={sectionRef}
-      id="user-guide"
-      aria-labelledby="guide-heading"
-      className="guide"
-    >
-      <div className="guide__right-stripe" aria-hidden="true" />
-
+    <section ref={sectionRef} id="user-guide" aria-label="How to Buy a Plot" className="guide revamp revamp--guide">
+      <div className="guide__right-stripe" />
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">How It Works</span>

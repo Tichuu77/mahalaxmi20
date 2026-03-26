@@ -100,14 +100,8 @@ export function TestimonialsSection() {
   const active = testimonials[current]
 
   return (
-    <section
-      ref={sectionRef}
-      id="testimonials"
-      aria-labelledby="testimonials-heading"
-      className="testimonials"
-    >
-      <div className="dot-bg dot-bg--dark" aria-hidden="true" />
-
+    <section ref={sectionRef} id="testimonials" aria-label="Customer Testimonials" className="testimonials revamp revamp--testimonials">
+      <div className="dot-bg dot-bg--dark" />
       <div className="label-strip label-strip--dark">
         <div className="label-strip__line" />
         <span className="label-strip__text">Testimonials</span>

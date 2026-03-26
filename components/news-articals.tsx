@@ -231,12 +231,7 @@ export default function NewsArticles() {
   const [featured, ...sides] = newsArticles
 
   return (
-    <section
-      ref={sectionRef}
-      id="news"
-      aria-labelledby="news-heading"
-      className="news"
-    >
+    <section ref={sectionRef} id="news" aria-label="News and Articles" className="news revamp revamp--news">
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">Latest Updates</span>

@@ -171,8 +171,8 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      aria-labelledby="contact-heading"
-      className="contact"
+      aria-label="Contact Mahalaxmi Infra"
+      className="contact revamp revamp--contact"
     >
       <div className="dot-bg" aria-hidden="true" />
 

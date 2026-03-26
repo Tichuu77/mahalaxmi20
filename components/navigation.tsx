@@ -46,10 +46,7 @@ export function Navigation() {
 
   return (
     <>
-      <header
-        role="banner"
-        className={`nav ${scrolled ? "nav--scrolled" : "nav--top"}`}
-      >
+      <nav role="navigation" aria-label="Main navigation" className={`nav revamp revamp--nav ${scrolled ? "nav--scrolled" : "nav--top"}`}>
         <div className="nav__inner">
           <a href="#" aria-label="Mahalaxmi Infra – Home" className="nav__logo">
             <img

@@ -191,12 +191,7 @@ export function GallerySection() {
   const vis = isVisible
 
   return (
-    <section
-      ref={sectionRef}
-      id="gallery"
-      aria-labelledby="gallery-heading"
-      className="gallery"
-    >
+    <section ref={sectionRef} id="gallery" aria-label="Project Gallery" className="gallery revamp revamp--gallery">
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">Gallery</span>
