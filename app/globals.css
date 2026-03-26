@@ -430,7 +430,7 @@
 @media(min-width:1024px){ .proj-grid { grid-template-columns:repeat(4,1fr); } }
 @media (max-width: 480px) {
   .proj-grid {
-    grid-template-columns: 1fr; /* 🔥 1 card per row */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .proj-card { background:#fff; border:1px solid rgba(48,83,74,.09); border-radius:20px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 4px 16px rgba(48,83,74,.06); transition:box-shadow .25s,border-color .25s; }
@@ -979,6 +979,152 @@
 .footer__cert   { display:flex; align-items:center; gap:6px; }
 .footer__cert-dot  { width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
 .footer__cert-name { font-size:10px; color:rgba(255,255,255,.25); letter-spacing:.06em; font-weight:600; }
+
+/* ══════════════════════════════════════════════════
+   2026 VISUAL REFRESH (UNIQUE SECTION DNA + MOBILE APP FEEL)
+══════════════════════════════════════════════════ */
+.hero,
+.about,
+.amenities,
+.projects,
+.gallery,
+.why,
+.guide,
+.testimonials,
+.news,
+.faq,
+.contact,
+.footer {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::after,
+.about::after,
+.amenities::after,
+.projects::after,
+.gallery::after,
+.why::after,
+.guide::after,
+.testimonials::after,
+.news::after,
+.faq::after,
+.contact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+  z-index: -1;
+}
+
+.hero::after { background: radial-gradient(1200px 380px at 8% 0%, rgba(201,134,43,.12), transparent 60%); }
+.about::after { background: radial-gradient(700px 280px at 100% 0%, rgba(48,83,74,.09), transparent 70%); }
+.amenities::after { background: linear-gradient(115deg, rgba(201,134,43,.08), transparent 26%); }
+.projects::after { background: radial-gradient(700px 260px at 0% 100%, rgba(201,134,43,.08), transparent 70%); }
+.gallery::after { background: linear-gradient(145deg, rgba(48,83,74,.05), transparent 35%); }
+.why::after { background: radial-gradient(620px 230px at 92% 10%, rgba(201,134,43,.09), transparent 75%); }
+.guide::after { background: linear-gradient(160deg, rgba(48,83,74,.06), transparent 40%); }
+.testimonials::after { background: radial-gradient(580px 220px at 10% 100%, rgba(201,134,43,.09), transparent 78%); }
+.news::after { background: linear-gradient(135deg, rgba(48,83,74,.05), transparent 32%); }
+.faq::after { background: radial-gradient(680px 280px at 100% 100%, rgba(201,134,43,.08), transparent 72%); }
+.contact::after { background: linear-gradient(160deg, rgba(48,83,74,.06), transparent 38%); }
+
+.section-inner {
+  border-radius: clamp(18px, 2.4vw, 28px);
+}
+
+.amenity-card,
+.proj-card,
+.news-card,
+.faq-item,
+.contact-card--light,
+.contact__badge,
+.gallery__mob-card {
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.amenity-card {
+  border-style: dashed;
+  border-width: 1px;
+}
+
+.proj-card {
+  border-radius: 22px;
+}
+
+.proj-card:nth-child(2n) { transform: translateY(8px); }
+.proj-card:nth-child(3n) { border-top-right-radius: 28px; }
+
+.gallery__grid {
+  grid-auto-rows: 155px;
+}
+
+.faq-item--open {
+  border-left: 3px solid var(--gold);
+}
+
+.contact__form-wrap {
+  border-radius: 26px;
+}
+
+/* Mobile-first, app-like ergonomics */
+@media (max-width: 768px) {
+  body {
+    background: linear-gradient(180deg, #fff 0%, #f7f4ef 100%);
+  }
+
+  .nav__inner {
+    height: 64px;
+    border-radius: 0 0 18px 18px;
+    backdrop-filter: blur(14px);
+  }
+
+  .section-inner {
+    padding: clamp(1.25rem, 4.5vw, 2rem) clamp(.8rem, 4vw, 1rem);
+  }
+
+  .about__features,
+  .amenities__grid,
+  .proj-grid,
+  .contact__badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    overflow: visible;
+  }
+
+  .hero__stat {
+    min-width: 0;
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .proj-card:nth-child(2n) { transform: none; }
+
+  .proj-card__img-wrap,
+  .amenity-card,
+  .contact-card,
+  .news-card,
+  .faq-item {
+    border-radius: 16px;
+  }
+
+  .hero__btn-primary,
+  .hero__btn-secondary,
+  .about__cta,
+  .proj-hero__cta,
+  .contact__submit {
+    min-height: 46px;
+    border-radius: 12px;
+  }
+}
 
 /* Stars */
 .stars { display:flex; gap:3px; }
