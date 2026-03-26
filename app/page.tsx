@@ -19,7 +19,7 @@ const Footer              = dynamic(() => import("../components/footer").then(m 
 
 export default function Home() {
   return (
-    <>
+    <div className="site-refresh">
       {/* Skip-to-main for keyboard & screen-reader users */}
       <a
         href="#main-content"
@@ -49,6 +49,6 @@ export default function Home() {
       {/* Floating action buttons */}
       <CallButton />
       <WhatsappButton />
-    </>
+    </div>
   )
 }

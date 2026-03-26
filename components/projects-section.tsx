@@ -246,7 +246,7 @@ export function ProjectsSection() {
   const vis = isVisible
 
   return (
-    <section ref={sectionRef} id="projects" aria-label="Our Projects" className="projects revamp revamp--projects">
+    <section ref={sectionRef} id="projects" aria-label="Our Projects" className="projects revamp revamp--projects refresh-v3 refresh-v3--projects">
       <div className="label-strip label-strip--dark">
         <div className="label-strip__line" />
         <span className="label-strip__text">Our Portfolio</span>

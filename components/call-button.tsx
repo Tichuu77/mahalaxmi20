@@ -1,32 +1,28 @@
 "use client"
 
+import { Phone } from "lucide-react"
+
 export default function CallButton() {
   return (
-    <div className="fixed bottom-6 left-6 z-40 sm:bottom-8 sm:left-8">
+    <div className="fixed bottom-6 left-4 z-40 sm:bottom-8 sm:left-8 refresh-v3 refresh-v3--call">
       <a
         href="tel:+919970501128"
         aria-label="Call us at +91 9970501128"
-        className="relative group block"
+        className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl border border-white/30 bg-[#30534A] px-3 py-3 text-white shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(48,83,74,0.5)]"
       >
-        {/* Pulse ring */}
-        <span
-          className="absolute inset-0 w-14 h-14 rounded-full animate-ping opacity-60 sm:w-16 sm:h-16"
-          style={{ background: "#30534A" }}
-          aria-hidden="true"
-        />
+        <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[#30534A] via-[#3d6a5f] to-[#30534A] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-    return (
-        <div className="fixed bottom-6 left-4 md:bottom-8 md:left-8 z-40 revamp-fab revamp-fab--call">
-            <a href={url} className="relative group" aria-label="Call">
-                <div className="absolute inset-0 w-16 h-16 rounded-full animate-ping opacity-75"
-                    style={{ background: '#30534A' }} />
-                <div className="relative w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110"
-                    style={{ background: '#30534A' }}>
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
-                </div>
-            </a>
-        </div>
-    )
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#30534A]">
+          <Phone size={18} strokeWidth={2.5} />
+        </span>
+
+        <span className="pr-1">
+          <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80">Need Help?</span>
+          <span className="block text-sm font-bold leading-none">Call Now</span>
+        </span>
+
+        <span className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
+      </a>
+    </div>
+  )
 }

@@ -2,7 +2,7 @@
 
 export default function WhatsappButton() {
   return (
-    <div className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 revamp-fab revamp-fab--whatsapp">
+    <div className="fixed bottom-6 right-4 md:bottom-8 md:right-8 z-40 revamp-fab revamp-fab--whatsapp refresh-v3 refresh-v3--whatsapp">
       <a
         href="https://wa.me/+919970501128?text=Enquiry for more details"
         target="_blank"
