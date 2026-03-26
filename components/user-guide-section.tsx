@@ -135,7 +135,7 @@ export function UserGuideSection() {
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Left - Steps Accordion */}
           <div
-            className={`space-y-3 transition-all delay-100 duration-700 ${
+            className={`space-y-2 transition-all delay-100 duration-700 sm:space-y-3 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
@@ -145,21 +145,21 @@ export function UserGuideSection() {
               return (
                 <div
                   key={guide.number}
-                  className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  className={`overflow-hidden rounded-xl border transition-all duration-300 sm:rounded-2xl ${
                     isOpen
                       ? "border-[#C9862b]/30 bg-white shadow-lg"
                       : "border-[#30534A]/10 bg-white/50 hover:border-[#30534A]/20 hover:bg-white"
                   }`}
                 >
                   <button
-                    className="flex w-full items-center gap-4 p-5 text-left"
+                    className="flex w-full items-center gap-3 p-4 text-left sm:gap-4 sm:p-5"
                     onClick={() => handleToggle(index)}
                     aria-expanded={isOpen}
                     type="button"
                   >
                     {/* Number */}
                     <span
-                      className={`text-2xl font-bold transition-colors ${
+                      className={`text-xl font-bold transition-colors sm:text-2xl ${
                         isOpen ? "text-[#C9862b]" : "text-[#30534A]/20"
                       }`}
                     >
@@ -168,56 +168,56 @@ export function UserGuideSection() {
 
                     {/* Icon */}
                     <div
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all ${
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-all sm:h-12 sm:w-12 sm:rounded-xl ${
                         isOpen ? "bg-[#C9862b]/10" : "bg-[#30534A]/5"
                       }`}
                     >
                       <Icon
-                        size={20}
-                        className={`transition-colors ${isOpen ? "text-[#C9862b]" : "text-[#30534A]"}`}
+                        size={18}
+                        className={`transition-colors sm:size-5 ${isOpen ? "text-[#C9862b]" : "text-[#30534A]"}`}
                       />
                     </div>
 
                     {/* Text */}
-                    <div className="flex-1">
+                    <div className="min-w-0 flex-1">
                       <h3
-                        className={`text-base font-bold transition-colors sm:text-lg ${
+                        className={`text-sm font-bold transition-colors sm:text-lg ${
                           isOpen ? "text-[#0d1a16]" : "text-[#0d1a16]/80"
                         }`}
                       >
                         {guide.title}
                       </h3>
-                      <p className="text-sm text-[#888]">{guide.description}</p>
+                      <p className="truncate text-xs text-[#888] sm:text-sm sm:whitespace-normal">{guide.description}</p>
                     </div>
 
                     {/* Chevron */}
                     <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all ${
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all sm:h-8 sm:w-8 ${
                         isOpen ? "rotate-180 bg-[#C9862b] text-white" : "bg-[#30534A]/5 text-[#30534A]"
                       }`}
                     >
-                      <ChevronDown size={16} />
+                      <ChevronDown size={14} className="sm:size-4" />
                     </div>
                   </button>
 
                   {/* Expanded Content */}
                   {isOpen && (
-                    <div className="border-t border-[#30534A]/10 px-5 pb-5 pt-4">
-                      <ul className="mb-4 space-y-2">
+                    <div className="border-t border-[#30534A]/10 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4">
+                      <ul className="mb-3 space-y-2 sm:mb-4">
                         {guide.details.map((detail, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#30534A]/10">
-                              <CheckCircle2 size={10} className="text-[#30534A]" />
+                          <li key={i} className="flex items-start gap-2 sm:gap-3">
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#30534A]/10 sm:mt-1 sm:h-5 sm:w-5">
+                              <CheckCircle2 size={8} className="text-[#30534A] sm:size-[10px]" />
                             </span>
-                            <span className="text-sm text-[#555]">{detail}</span>
+                            <span className="text-xs text-[#555] sm:text-sm">{detail}</span>
                           </li>
                         ))}
                       </ul>
 
                       {/* Tip */}
-                      <div className="flex items-start gap-3 rounded-xl bg-[#C9862b]/5 p-4">
-                        <Lightbulb size={16} className="mt-0.5 shrink-0 text-[#C9862b]" />
-                        <p className="text-sm text-[#a86a1a]">{guide.tip}</p>
+                      <div className="flex items-start gap-2 rounded-lg bg-[#C9862b]/5 p-3 sm:gap-3 sm:rounded-xl sm:p-4">
+                        <Lightbulb size={14} className="mt-0.5 shrink-0 text-[#C9862b] sm:size-4" />
+                        <p className="text-xs text-[#a86a1a] sm:text-sm">{guide.tip}</p>
                       </div>
                     </div>
                   )}

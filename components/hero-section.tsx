@@ -97,23 +97,22 @@ export function HeroSection() {
             Bank loan up to <span className="font-bold text-[#C9862b]">90%</span> available.
           </p>
 
-          {/* Stats Row - Horizontal scroll on mobile */}
+          {/* Stats Row - Grid on mobile, flex on larger screens */}
           <div 
-            className={`mb-8 flex w-full gap-3 overflow-x-auto pb-2 transition-all delay-300 duration-700 sm:justify-center lg:justify-start ${
+            className={`mb-8 grid w-full grid-cols-2 gap-2 transition-all delay-300 duration-700 sm:flex sm:flex-wrap sm:justify-center sm:gap-3 lg:justify-start ${
               loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {STATS.map((stat) => {
               const Icon = stat.icon
               return (
                 <div
                   key={stat.label}
-                  className="flex min-w-[100px] shrink-0 flex-col items-center rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-sm transition-all duration-300 hover:border-[#C9862b]/30 hover:bg-white/10"
+                  className="flex flex-col items-center rounded-2xl border border-white/10 bg-white/5 px-3 py-3 backdrop-blur-sm transition-all duration-300 hover:border-[#C9862b]/30 hover:bg-white/10 sm:min-w-[100px] sm:px-5 sm:py-4"
                 >
-                  <Icon size={18} className="mb-2 text-[#C9862b]" />
-                  <span className="text-2xl font-bold text-white">{stat.value}</span>
-                  <span className="text-xs font-medium uppercase tracking-wider text-white/50">{stat.label}</span>
+                  <Icon size={16} className="mb-1.5 text-[#C9862b] sm:mb-2 sm:size-[18px]" />
+                  <span className="text-xl font-bold text-white sm:text-2xl">{stat.value}</span>
+                  <span className="text-[10px] font-medium uppercase tracking-wider text-white/50 sm:text-xs">{stat.label}</span>
                 </div>
               )
             })}
@@ -121,20 +120,20 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div 
-            className={`flex flex-col gap-3 transition-all delay-400 duration-700 sm:flex-row ${
+            className={`flex w-full flex-col gap-3 transition-all delay-400 duration-700 sm:w-auto sm:flex-row ${
               loaded ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
             }`}
           >
             <a
               href="#projects"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C9862b] to-[#a86a1a] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#C9862b]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#C9862b]/40"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C9862b] to-[#a86a1a] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#C9862b]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#C9862b]/40 sm:px-8 sm:py-4"
             >
               Explore Projects
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
               href="#contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10 sm:px-8 sm:py-4"
             >
               <Play size={14} className="fill-white" />
               Schedule Visit

@@ -94,7 +94,7 @@ export function AmenitiesSection() {
 
           {/* Tabs */}
           <div
-            className="flex flex-wrap justify-center gap-2 lg:justify-end"
+            className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:justify-end"
             role="tablist"
             aria-label="Filter amenities by category"
           >
@@ -104,7 +104,7 @@ export function AmenitiesSection() {
                 role="tab"
                 aria-selected={activeTab === tab}
                 onClick={() => setActiveTab(tab)}
-                className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-xs ${
                   activeTab === tab
                     ? "bg-[#30534A] text-white shadow-lg shadow-[#30534A]/30"
                     : "border border-[#30534A]/15 bg-transparent text-[#555] hover:border-[#30534A] hover:text-[#30534A]"
@@ -118,35 +118,35 @@ export function AmenitiesSection() {
         </div>
 
         {/* Amenities Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((amenity, index) => {
             const Icon = "icon" in amenity ? amenity.icon : null
             return (
               <article
                 key={amenity.title}
-                className={`group relative overflow-hidden rounded-2xl border border-[#30534A]/10 bg-[#f7f4ef] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-[#C9862b]/30 hover:bg-white hover:shadow-xl ${
+                className={`group relative overflow-hidden rounded-xl border border-[#30534A]/10 bg-[#f7f4ef] p-3 transition-all duration-500 hover:-translate-y-1 hover:border-[#C9862b]/30 hover:bg-white hover:shadow-xl sm:rounded-2xl sm:p-5 ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
                 aria-label={amenity.title}
               >
                 {/* Corner Decoration */}
-                <div className="absolute right-0 top-0 h-20 w-20 rounded-bl-[100%] bg-gradient-to-br from-[#30534A]/5 to-transparent transition-colors group-hover:from-[#C9862b]/10" />
+                <div className="absolute right-0 top-0 h-12 w-12 rounded-bl-[100%] bg-gradient-to-br from-[#30534A]/5 to-transparent transition-colors group-hover:from-[#C9862b]/10 sm:h-20 sm:w-20" />
 
                 {/* Icon */}
-                <div className="relative mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                <div className="relative mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg sm:mb-4 sm:h-14 sm:w-14 sm:rounded-xl">
                   {Icon ? (
-                    <Icon size={24} className="text-[#30534A] transition-colors group-hover:text-[#C9862b]" />
+                    <Icon size={18} className="text-[#30534A] transition-colors group-hover:text-[#C9862b] sm:size-6" />
                   ) : (
-                    <span className="text-xl font-bold text-[#30534A] transition-colors group-hover:text-[#C9862b]">
+                    <span className="text-base font-bold text-[#30534A] transition-colors group-hover:text-[#C9862b] sm:text-xl">
                       {getEmojiIcon(amenity.emoji || "")}
                     </span>
                   )}
                 </div>
 
                 {/* Content */}
-                <h3 className="mb-2 text-base font-bold text-[#0d1a16]">{amenity.title}</h3>
-                <p className="text-sm leading-relaxed text-[#666]">{amenity.description}</p>
+                <h3 className="mb-1 text-sm font-bold text-[#0d1a16] sm:mb-2 sm:text-base">{amenity.title}</h3>
+                <p className="line-clamp-2 text-xs leading-relaxed text-[#666] sm:line-clamp-none sm:text-sm">{amenity.description}</p>
 
                 {/* Bottom Bar */}
                 <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-[#C9862b] to-[#30534A] transition-all duration-500 group-hover:w-full" />

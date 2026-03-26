@@ -116,13 +116,13 @@ export default function FaqSection() {
           </div>
 
           {/* Filter Chips */}
-          <div className="flex flex-wrap justify-center gap-2 lg:justify-end" role="group" aria-label="Filter questions">
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:justify-end" role="group" aria-label="Filter questions">
             {CHIPS.map((chip) => (
               <button
                 key={chip}
                 onClick={() => setActiveChip(chip)}
                 aria-pressed={activeChip === chip}
-                className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all ${
+                className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all sm:px-4 sm:py-2 sm:text-xs ${
                   activeChip === chip
                     ? "bg-[#30534A] text-white shadow-lg shadow-[#30534A]/30"
                     : "border border-[#30534A]/15 bg-white text-[#555] hover:border-[#30534A] hover:text-[#30534A]"
@@ -136,10 +136,10 @@ export default function FaqSection() {
         </div>
 
         {/* Main Content */}
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
           {/* FAQ Accordion */}
           <div
-            className={`lg:col-span-2 space-y-3 transition-all delay-100 duration-700 ${
+            className={`lg:col-span-2 space-y-2 sm:space-y-3 transition-all delay-100 duration-700 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >
@@ -148,7 +148,7 @@ export default function FaqSection() {
               return (
                 <div
                   key={faq.id}
-                  className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  className={`overflow-hidden rounded-xl border transition-all duration-300 sm:rounded-2xl ${
                     isOpen
                       ? "border-[#C9862b]/30 bg-white shadow-lg"
                       : "border-[#30534A]/10 bg-white/50 hover:border-[#30534A]/20 hover:bg-white"
@@ -156,29 +156,29 @@ export default function FaqSection() {
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
                   <button
-                    className="flex w-full items-center gap-4 p-5 text-left"
+                    className="flex w-full items-center gap-3 p-4 text-left sm:gap-4 sm:p-5"
                     onClick={() => toggle(faq.id)}
                     aria-expanded={isOpen}
                     type="button"
                   >
                     <span
-                      className={`text-lg font-bold transition-colors ${isOpen ? "text-[#C9862b]" : "text-[#30534A]/30"}`}
+                      className={`text-base font-bold transition-colors sm:text-lg ${isOpen ? "text-[#C9862b]" : "text-[#30534A]/30"}`}
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className={`flex-1 text-base font-semibold ${isOpen ? "text-[#0d1a16]" : "text-[#0d1a16]/80"}`}>
+                    <span className={`flex-1 text-sm font-semibold sm:text-base ${isOpen ? "text-[#0d1a16]" : "text-[#0d1a16]/80"}`}>
                       {faq.question}
                     </span>
                     <div
-                      className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all ${
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all sm:h-8 sm:w-8 ${
                         isOpen ? "rotate-180 bg-[#C9862b] text-white" : "bg-[#30534A]/5 text-[#30534A]"
                       }`}
                     >
-                      <ChevronDown size={16} />
+                      <ChevronDown size={14} className="sm:size-4" />
                     </div>
                   </button>
                   {isOpen && (
-                    <div className="border-t border-[#30534A]/10 px-5 pb-5 pt-4">
+                    <div className="border-t border-[#30534A]/10 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4">
                       <p className="text-sm leading-relaxed text-[#555]">{faq.answer}</p>
                     </div>
                   )}
@@ -187,9 +187,9 @@ export default function FaqSection() {
             })}
 
             {/* Hint */}
-            <div className="flex items-center gap-3 rounded-2xl border border-[#30534A]/10 bg-white/50 p-4">
-              <MessageCircle size={18} className="shrink-0 text-[#30534A]" />
-              <p className="text-sm text-[#666]">
+            <div className="flex items-start gap-3 rounded-xl border border-[#30534A]/10 bg-white/50 p-3 sm:items-center sm:rounded-2xl sm:p-4">
+              <MessageCircle size={16} className="mt-0.5 shrink-0 text-[#30534A] sm:mt-0 sm:size-[18px]" />
+              <p className="text-xs text-[#666] sm:text-sm">
                 Still have questions? <strong>Chat with us on WhatsApp</strong> - we respond within minutes.
               </p>
             </div>

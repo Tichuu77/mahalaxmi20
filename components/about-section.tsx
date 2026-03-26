@@ -126,29 +126,29 @@ export function AboutSection() {
             }`}
           >
             {/* Features Grid */}
-            <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="mb-8 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
               {FEATURES.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
-                  className="group flex items-center gap-3 rounded-xl border border-[#30534A]/10 bg-white p-4 transition-all duration-300 hover:border-[#C9862b]/30 hover:shadow-lg"
+                  className="group flex flex-col items-center gap-2 rounded-xl border border-[#30534A]/10 bg-white p-3 text-center transition-all duration-300 hover:border-[#C9862b]/30 hover:shadow-lg sm:flex-row sm:gap-3 sm:p-4 sm:text-left"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#30534A]/10 transition-colors group-hover:bg-[#C9862b]/10">
-                    <Icon size={18} className="text-[#30534A] transition-colors group-hover:text-[#C9862b]" />
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#30534A]/10 transition-colors group-hover:bg-[#C9862b]/10 sm:h-10 sm:w-10">
+                    <Icon size={16} className="text-[#30534A] transition-colors group-hover:text-[#C9862b] sm:size-[18px]" />
                   </div>
-                  <span className="text-xs font-semibold text-[#0d1a16] sm:text-sm">{text}</span>
+                  <span className="text-[11px] font-semibold leading-tight text-[#0d1a16] sm:text-sm">{text}</span>
                 </div>
               ))}
             </div>
 
             {/* Trust Badges */}
-            <div className="mb-8 flex flex-wrap gap-3">
+            <div className="mb-8 flex flex-wrap justify-center gap-2 sm:justify-start sm:gap-3">
               {TRUST.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#30534A]/15 bg-[#30534A]/5 px-4 py-2"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#30534A]/15 bg-[#30534A]/5 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2"
                 >
-                  <Icon size={14} className="text-[#30534A]" />
-                  <span className="text-xs font-bold text-[#30534A]">{label}</span>
+                  <Icon size={12} className="text-[#30534A] sm:size-[14px]" />
+                  <span className="text-[10px] font-bold text-[#30534A] sm:text-xs">{label}</span>
                 </div>
               ))}
             </div>
@@ -156,7 +156,7 @@ export function AboutSection() {
             {/* CTA Button */}
             <a
               href="#projects"
-              className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#30534A] to-[#3d6b60] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#30534A]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#30534A] to-[#3d6b60] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#30534A]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto sm:gap-3 sm:px-8 sm:py-4"
             >
               Explore Our Projects
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />

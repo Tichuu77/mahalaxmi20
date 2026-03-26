@@ -154,14 +154,14 @@ export function WhyChooseUsSection() {
         </div>
 
         {/* Reasons Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-3">
           {reasons.map((reason, index) => {
             const Icon = reason.icon
             const isActive = activeCard === index
             return (
               <article
                 key={reason.title}
-                className={`group relative overflow-hidden rounded-2xl border p-6 transition-all duration-500 ${
+                className={`group relative overflow-hidden rounded-xl border p-4 transition-all duration-500 sm:rounded-2xl sm:p-6 ${
                   isActive
                     ? "border-[#C9862b]/30 bg-[#30534A] text-white shadow-xl shadow-[#30534A]/20"
                     : "border-[#30534A]/10 bg-[#f7f4ef] hover:border-[#C9862b]/30 hover:shadow-lg"
@@ -172,7 +172,7 @@ export function WhyChooseUsSection() {
               >
                 {/* Number */}
                 <span
-                  className={`absolute right-4 top-4 text-4xl font-bold transition-colors ${
+                  className={`absolute right-2 top-2 text-2xl font-bold transition-colors sm:right-4 sm:top-4 sm:text-4xl ${
                     isActive ? "text-white/10" : "text-[#30534A]/5"
                   }`}
                 >
@@ -181,30 +181,30 @@ export function WhyChooseUsSection() {
 
                 {/* Icon */}
                 <div
-                  className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl transition-all duration-300 ${
+                  className={`mb-3 flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-300 sm:mb-4 sm:h-14 sm:w-14 sm:rounded-xl ${
                     isActive ? "bg-white/10" : "bg-white shadow-sm group-hover:shadow-md"
                   }`}
                 >
                   <Icon
-                    size={24}
-                    className={`transition-colors ${isActive ? "text-[#C9862b]" : "text-[#30534A] group-hover:text-[#C9862b]"}`}
+                    size={18}
+                    className={`transition-colors sm:size-6 ${isActive ? "text-[#C9862b]" : "text-[#30534A] group-hover:text-[#C9862b]"}`}
                   />
                 </div>
 
                 {/* Content */}
-                <h3 className={`mb-2 text-lg font-bold ${isActive ? "text-white" : "text-[#0d1a16]"}`}>{reason.title}</h3>
-                <p className={`mb-4 text-sm leading-relaxed ${isActive ? "text-white/70" : "text-[#666]"}`}>
+                <h3 className={`mb-1 text-sm font-bold sm:mb-2 sm:text-lg ${isActive ? "text-white" : "text-[#0d1a16]"}`}>{reason.title}</h3>
+                <p className={`mb-3 line-clamp-2 text-xs leading-relaxed sm:mb-4 sm:line-clamp-none sm:text-sm ${isActive ? "text-white/70" : "text-[#666]"}`}>
                   {reason.description}
                 </p>
 
                 {/* Stat */}
                 <div
-                  className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 ${
+                  className={`inline-flex items-center gap-1 rounded-full px-2 py-1 sm:gap-2 sm:px-3 sm:py-1.5 ${
                     isActive ? "bg-white/10" : "bg-[#C9862b]/10"
                   }`}
                 >
-                  <span className="text-lg font-bold text-[#C9862b]">{reason.stat}</span>
-                  <span className={`text-xs font-semibold ${isActive ? "text-white/60" : "text-[#888]"}`}>
+                  <span className="text-base font-bold text-[#C9862b] sm:text-lg">{reason.stat}</span>
+                  <span className={`text-[9px] font-semibold sm:text-xs ${isActive ? "text-white/60" : "text-[#888]"}`}>
                     {reason.statLabel}
                   </span>
                 </div>

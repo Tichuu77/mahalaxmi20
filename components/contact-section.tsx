@@ -140,7 +140,7 @@ export default function ContactSection() {
         </div>
 
         {/* Main Content */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
           {/* Left - Contact Info */}
           <div
             className={`space-y-4 transition-all delay-100 duration-700 ${
@@ -155,23 +155,23 @@ export default function ContactSection() {
                 <Wrapper
                   key={contact.label}
                   {...(contact.href ? { href: contact.href } : {})}
-                  className={`group flex items-start gap-4 rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  className={`group flex items-start gap-3 rounded-xl border p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:gap-4 sm:rounded-2xl sm:p-5 ${
                     contact.accent
                       ? "border-[#C9862b]/30 bg-[#C9862b]/10 hover:bg-[#C9862b]/20"
                       : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
                   }`}
                 >
                   <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all ${
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-all sm:h-12 sm:w-12 sm:rounded-xl ${
                       contact.accent ? "bg-[#C9862b] text-white" : "bg-white/10 text-[#C9862b]"
                     }`}
                   >
-                    <Icon size={20} />
+                    <Icon size={18} className="sm:size-5" />
                   </div>
-                  <div>
-                    <p className="mb-1 text-xs font-bold uppercase tracking-widest text-white/50">{contact.label}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-white/50 sm:text-xs">{contact.label}</p>
                     {contact.values.map((v, i) => (
-                      <p key={i} className={`text-base font-semibold ${contact.accent ? "text-[#C9862b]" : "text-white"}`}>
+                      <p key={i} className={`break-words text-sm font-semibold sm:text-base ${contact.accent ? "text-[#C9862b]" : "text-white"}`}>
                         {v}
                       </p>
                     ))}
@@ -181,14 +181,14 @@ export default function ContactSection() {
             })}
 
             {/* Badges */}
-            <div className="flex flex-wrap gap-2 pt-4">
+            <div className="grid grid-cols-2 gap-2 pt-4 sm:flex sm:flex-wrap">
               {BADGES.map(({ icon: Icon, text }) => (
                 <div
                   key={text}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2"
                 >
-                  <Icon size={14} className="text-[#C9862b]" />
-                  <span className="text-xs font-semibold text-white/70">{text}</span>
+                  <Icon size={12} className="shrink-0 text-[#C9862b] sm:size-[14px]" />
+                  <span className="text-[10px] font-semibold text-white/70 sm:text-xs">{text}</span>
                 </div>
               ))}
             </div>
@@ -196,7 +196,7 @@ export default function ContactSection() {
 
           {/* Right - Contact Form */}
           <div
-            className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all delay-200 duration-700 sm:p-8 ${
+            className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all delay-200 duration-700 sm:rounded-3xl sm:p-8 ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
             }`}
           >

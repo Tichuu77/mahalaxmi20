@@ -128,7 +128,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Main Content */}
-        <div className="grid gap-8 lg:grid-cols-5 lg:gap-12">
+        <div className="grid gap-6 lg:grid-cols-5 lg:gap-12">
           {/* Active Quote Card */}
           <div
             className={`lg:col-span-3 transition-all delay-100 duration-700 ${
@@ -137,7 +137,7 @@ export function TestimonialsSection() {
           >
             <blockquote
               key={active.id}
-              className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8 lg:p-10"
+              className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm sm:rounded-3xl sm:p-8 lg:p-10"
               aria-label={`Testimonial from ${active.name}`}
             >
               {/* Quote Icon */}
@@ -155,27 +155,27 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Quote Text */}
-                <p className="mb-8 text-lg leading-relaxed text-white/80 sm:text-xl lg:text-2xl">
+                <p className="mb-6 text-base leading-relaxed text-white/80 sm:mb-8 sm:text-lg lg:text-2xl">
                   &ldquo;{active.content}&rdquo;
                 </p>
 
                 {/* Author */}
-                <footer className="flex items-center gap-4">
-                  <div className="relative">
+                <footer className="flex items-center gap-3 sm:gap-4">
+                  <div className="relative shrink-0">
                     <img
                       src={active.image}
                       alt={active.name}
                       loading="lazy"
                       decoding="async"
-                      className="h-14 w-14 rounded-2xl object-cover"
+                      className="h-12 w-12 rounded-xl object-cover sm:h-14 sm:w-14 sm:rounded-2xl"
                       width={56}
                       height={56}
                     />
-                    <div className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full border-2 border-[#0d1a16] bg-[#30534A]" />
+                    <div className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-[#0d1a16] bg-[#30534A] sm:h-4 sm:w-4" />
                   </div>
-                  <div>
-                    <p className="text-base font-bold text-white">{active.name}</p>
-                    <p className="text-sm text-white/50">{active.location} - Verified Buyer</p>
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-white sm:text-base">{active.name}</p>
+                    <p className="truncate text-xs text-white/50 sm:text-sm">{active.location} - Verified Buyer</p>
                   </div>
                 </footer>
               </div>
@@ -227,14 +227,14 @@ export function TestimonialsSection() {
             }`}
           >
             {/* Testimonial Picker */}
-            <div className="space-y-3" role="tablist" aria-label="Select testimonial">
+            <div className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:space-y-3 lg:overflow-visible lg:pb-0" role="tablist" aria-label="Select testimonial" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
               {testimonials.map((t, i) => (
                 <button
                   key={t.id}
                   role="tab"
                   aria-selected={i === current}
                   onClick={() => goTo(i)}
-                  className={`flex w-full items-center gap-4 rounded-2xl border p-4 text-left transition-all ${
+                  className={`flex min-w-[200px] shrink-0 items-center gap-3 rounded-xl border p-3 text-left transition-all lg:min-w-0 lg:gap-4 lg:rounded-2xl lg:p-4 ${
                     i === current
                       ? "border-[#C9862b]/30 bg-[#C9862b]/10"
                       : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/10"
@@ -246,17 +246,19 @@ export function TestimonialsSection() {
                     alt={t.name}
                     loading="lazy"
                     decoding="async"
-                    className={`h-12 w-12 rounded-xl object-cover transition-all ${
+                    className={`h-10 w-10 shrink-0 rounded-lg object-cover transition-all lg:h-12 lg:w-12 lg:rounded-xl ${
                       i === current ? "ring-2 ring-[#C9862b]" : ""
                     }`}
                     width={48}
                     height={48}
                   />
-                  <div className="flex-1">
-                    <p className={`font-bold ${i === current ? "text-white" : "text-white/70"}`}>{t.name}</p>
-                    <p className={`text-sm ${i === current ? "text-white/60" : "text-white/40"}`}>{t.location}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className={`truncate text-sm font-bold lg:text-base ${i === current ? "text-white" : "text-white/70"}`}>{t.name}</p>
+                    <p className={`truncate text-xs lg:text-sm ${i === current ? "text-white/60" : "text-white/40"}`}>{t.location}</p>
                   </div>
-                  <Stars count={t.rating} />
+                  <div className="hidden sm:block">
+                    <Stars count={t.rating} />
+                  </div>
                 </button>
               ))}
             </div>

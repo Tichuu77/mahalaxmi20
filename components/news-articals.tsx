@@ -203,42 +203,42 @@ export default function NewsArticles() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="space-y-4 lg:hidden">
+        <div className="space-y-3 lg:hidden">
           {newsArticles.map((article, index) => (
             <article
               key={article.id}
-              className={`overflow-hidden rounded-2xl border border-[#30534A]/10 bg-[#f7f4ef] transition-all duration-500 ${
+              className={`overflow-hidden rounded-xl border border-[#30534A]/10 bg-[#f7f4ef] transition-all duration-500 sm:rounded-2xl ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <button
                 onClick={() => toggle(article.id)}
-                className="flex w-full items-center gap-4 p-4 text-left"
+                className="flex w-full items-center gap-3 p-3 text-left sm:gap-4 sm:p-4"
                 type="button"
               >
                 <img
                   src={article.image}
                   alt=""
                   loading="lazy"
-                  className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                  className="h-14 w-14 shrink-0 rounded-lg object-cover sm:h-16 sm:w-16 sm:rounded-xl"
                 />
-                <div className="flex-1">
-                  <span className="mb-1 inline-block rounded-full bg-[#C9862b]/10 px-2 py-0.5 text-[9px] font-bold uppercase text-[#C9862b]">
+                <div className="min-w-0 flex-1">
+                  <span className="mb-0.5 inline-block rounded-full bg-[#C9862b]/10 px-2 py-0.5 text-[8px] font-bold uppercase text-[#C9862b] sm:mb-1 sm:text-[9px]">
                     {article.category}
                   </span>
-                  <h3 className="text-sm font-bold text-[#0d1a16]">{article.title}</h3>
+                  <h3 className="line-clamp-2 text-xs font-bold text-[#0d1a16] sm:text-sm">{article.title}</h3>
                 </div>
                 <ChevronDown
-                  size={18}
-                  className={`shrink-0 text-[#30534A] transition-transform ${
+                  size={16}
+                  className={`shrink-0 text-[#30534A] transition-transform sm:size-[18px] ${
                     expandedId === article.id ? "rotate-180" : ""
                   }`}
                 />
               </button>
               {expandedId === article.id && (
-                <div className="border-t border-[#30534A]/10 px-4 pb-4 pt-3">
-                  <p className="text-sm leading-relaxed text-[#555]">{article.content}</p>
+                <div className="border-t border-[#30534A]/10 px-3 pb-3 pt-2 sm:px-4 sm:pb-4 sm:pt-3">
+                  <p className="text-xs leading-relaxed text-[#555] sm:text-sm">{article.content}</p>
                 </div>
               )}
             </article>

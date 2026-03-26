@@ -236,7 +236,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
+      <body className={`${poppins.variable} ${inter.variable} font-sans antialiased overflow-x-hidden`}>
         {/* GTM noscript */}
         <noscript>
           <iframe

@@ -161,14 +161,14 @@ export function ProjectsSection() {
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 lg:justify-end" role="tablist" aria-label="Filter projects">
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:justify-end" role="tablist" aria-label="Filter projects">
             {TABS.map((t) => (
               <button
                 key={t.value}
                 role="tab"
                 aria-selected={activeTab === t.value}
                 onClick={() => setActiveTab(t.value)}
-                className={`rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`rounded-full px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all duration-300 sm:px-5 sm:py-2.5 sm:text-xs ${
                   activeTab === t.value
                     ? "bg-[#C9862b] text-white shadow-lg shadow-[#C9862b]/30"
                     : "border border-white/15 text-white/60 hover:border-[#C9862b]/50 hover:text-[#C9862b]"
@@ -191,7 +191,7 @@ export function ProjectsSection() {
             {/* Featured Project - First one */}
             {filtered[0] && (
               <div
-                className={`mb-8 overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all delay-100 duration-700 ${
+                className={`mb-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all delay-100 duration-700 sm:mb-8 sm:rounded-3xl ${
                   isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                 }`}
               >
@@ -205,37 +205,37 @@ export function ProjectsSection() {
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute left-4 top-4">
+                    <div className="absolute left-3 top-3 sm:left-4 sm:top-4">
                       <StatusBadge status={filtered[0].status} />
                     </div>
                     {/* Mobile Title Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4 lg:hidden">
-                      <p className="mb-1 text-xs font-bold uppercase tracking-wider text-[#C9862b]">Featured Project</p>
-                      <h3 className="text-xl font-bold text-white">{filtered[0].title}</h3>
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 lg:hidden">
+                      <p className="mb-0.5 text-[10px] font-bold uppercase tracking-wider text-[#C9862b] sm:mb-1 sm:text-xs">Featured Project</p>
+                      <h3 className="text-lg font-bold text-white sm:text-xl">{filtered[0].title}</h3>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-col justify-between p-6 lg:p-10">
+                  <div className="flex flex-col justify-between p-4 sm:p-6 lg:p-10">
                     <div>
                       <div className="mb-2 hidden lg:block">
                         <p className="mb-1 text-xs font-bold uppercase tracking-wider text-[#C9862b]">Featured Project</p>
                         <h3 className="text-3xl font-bold text-white">{filtered[0].title}</h3>
                       </div>
                       {filtered[0].location && (
-                        <div className="mb-4 flex items-center gap-2">
-                          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#C9862b]/20">
-                            <MapPin size={12} className="text-[#C9862b]" />
+                        <div className="mb-3 flex items-center gap-2 sm:mb-4">
+                          <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#C9862b]/20 sm:h-7 sm:w-7">
+                            <MapPin size={10} className="text-[#C9862b] sm:size-3" />
                           </div>
-                          <span className="text-xs font-bold uppercase tracking-widest text-white/50">{filtered[0].location}</span>
+                          <span className="text-[10px] font-bold uppercase tracking-widest text-white/50 sm:text-xs">{filtered[0].location}</span>
                         </div>
                       )}
-                      <p className="mb-6 text-sm leading-relaxed text-white/70 lg:text-base">{filtered[0].description}</p>
+                      <p className="mb-4 text-sm leading-relaxed text-white/70 sm:mb-6 lg:text-base">{filtered[0].description}</p>
 
                       {/* Tags */}
-                      <div className="mb-6 flex flex-wrap gap-2">
+                      <div className="mb-4 flex flex-wrap gap-1.5 sm:mb-6 sm:gap-2">
                         {["NMRDA Approved", "Bank Finance", "RERA Certified"].map((tag) => (
-                          <span key={tag} className="rounded-full border border-[#30534A]/30 bg-[#30534A]/20 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#30534A]">
+                          <span key={tag} className="rounded-full border border-[#30534A]/30 bg-[#30534A]/20 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-[#30534A] sm:px-3 sm:py-1.5 sm:text-[10px]">
                             {tag}
                           </span>
                         ))}
@@ -244,7 +244,7 @@ export function ProjectsSection() {
 
                     <button
                       onClick={() => openWA(filtered[0].title, filtered[0].location)}
-                      className="group inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#30534A] to-[#3d6b60] px-8 py-4 text-sm font-bold text-white shadow-lg shadow-[#30534A]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                      className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#30534A] to-[#3d6b60] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#30534A]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:w-auto sm:gap-3 sm:px-8 sm:py-4"
                       type="button"
                     >
                       <Phone size={16} />
