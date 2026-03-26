@@ -113,7 +113,7 @@ export function WhyChooseUsSection() {
   const vis = isVisible
 
   return (
-    <section ref={sectionRef} id="why-choose-us" aria-label="Why Choose Mahalaxmi Infra" className="wcu revamp revamp--wcu">
+    <section ref={sectionRef} id="why-choose-us" aria-label="Why Choose Mahalaxmi Infra" className="wcu revamp revamp--wcu refresh-v3 refresh-v3--wcu">
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">Why Choose Us</span>
