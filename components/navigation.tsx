@@ -132,7 +132,7 @@ export function Navigation() {
               </button>
             </div>
 
-            <nav className="space-y-2" aria-label="Mobile navigation">
+            <div className="space-y-2" role="navigation" aria-label="Mobile navigation">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -143,7 +143,7 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
-            </nav>
+            </div>
 
             <a
               href="#contact"
