@@ -23,11 +23,11 @@ const BASE_URL = "https://www.mm.mahalaxmiinfra.com"
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Mahalaxmi Infra – NMRDA & RERA Approved Plots in Nagpur | Starting ₹22L",
+    default: "Mahalaxmi Infra – NMRDA & RERA Approved Residential Plots in Nagpur | From ₹22 Lakh",
     template: "%s | Mahalaxmi Infra Nagpur",
   },
   description:
-    "Buy NMRDA sanctioned, RERA approved residential plots in Nagpur. Mahalaxmi Infra offers 70+ completed projects, 17,000+ happy families. Plots near MIHAN, Wardha Road, Hingna. Starting ₹22 Lakh. Bank loan available.",
+    "Buy NMRDA sanctioned, RERA approved residential plots in Nagpur. Mahalaxmi Infra offers 70+ completed projects, 17,000+ happy families. Plots near MIHAN, Wardha Road, Hingna. Starting ₹22 Lakh. Bank loan available up to 90%.",
   generator: "Next.js",
   applicationName: "Mahalaxmi Infra",
   referrer: "origin-when-cross-origin",
@@ -36,7 +36,9 @@ export const metadata: Metadata = {
   publisher: "Mahalaxmi Infra",
   formatDetection: { email: false, address: false, telephone: false },
   icons: {
-    icon: "/Mahalaxmi Infra new Logo.png",
+    icon: [
+      { url: "/Mahalaxmi Infra new Logo.png", type: "image/png" },
+    ],
     apple: "/Mahalaxmi Infra new Logo.png",
   },
   openGraph: {
@@ -81,40 +83,18 @@ export const metadata: Metadata = {
     "Mahalaxmi Infra",
     "Mahalaxmi Infra Nagpur",
     "Mahalaxmi Infra plots",
-    "Mahalaxmi Nagar Nagpur",
-    "Mahalaxmi Nagar 45",
-    "Mahalaxmi Nagar 49 Nagpur",
-    "Mahalaxmi Nagar near AIIMS Nagpur",
-    "plots for sale in MIHAN Nagpur",
-    "MIHAN Nagpur plots for sale",
-    "residential plots near AIIMS Nagpur",
-    "plots in Wardha Road Nagpur",
-    "Property in Hingna Nagpur",
-    "Mahalaxmi Infra Sumthana",
-    "Nagpur property",
-    "Nagpur real estate",
-    "Nagpur plots for sale",
-    "Plot for sale in Nagpur",
-    "Buy plot in Nagpur",
-    "Residential plots in Nagpur",
-    "NMRDA RL approved plots Nagpur",
+    "plots for sale in Nagpur",
+    "NMRDA approved plots Nagpur",
     "RERA approved plots Nagpur",
-    "Government sanctioned layout Nagpur",
-    "Clear title plots in Nagpur",
-    "Bank loan available plots Nagpur",
-    "Affordable plots in Nagpur",
-    "Best plots in Nagpur",
-    "Ready to register plots Nagpur",
-    "Nagpur flats for sale",
-    "2 BHK flats in Nagpur",
-    "Affordable flats in Nagpur",
-    "House for sale in Nagpur",
-    "House for sale in Manish Nagar Nagpur",
-    "Commercial property in Nagpur",
-    "Plots in Kamptee Nagpur",
-    "Kamptee Road property",
-    "Investment property in Nagpur",
-    "Budget homes Nagpur",
+    "residential plots Nagpur",
+    "plots near MIHAN Nagpur",
+    "plots Wardha Road Nagpur",
+    "plots near AIIMS Nagpur",
+    "property in Nagpur",
+    "buy plot Nagpur",
+    "bank loan plots Nagpur",
+    "affordable plots Nagpur",
+    "Mahalaxmi Nagar Nagpur",
   ],
 }
 
@@ -136,17 +116,15 @@ const structuredData = {
       email: "manoj.mungale@gmail.com",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "Flat 103/104, Laxmivihar Apartment, Wardha Road, Somalwada",
         addressLocality: "Nagpur",
         addressRegion: "Maharashtra",
+        postalCode: "440025",
         addressCountry: "IN",
       },
-      areaServed: {
-        "@type": "City",
-        name: "Nagpur",
-      },
-      sameAs: [],
-      numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
+      areaServed: { "@type": "City", name: "Nagpur" },
       foundingDate: "2012",
+      numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
     },
     {
       "@type": "WebSite",
@@ -171,7 +149,9 @@ const structuredData = {
         "Buy NMRDA sanctioned, RERA approved residential plots in Nagpur starting ₹22 Lakh.",
       breadcrumb: {
         "@type": "BreadcrumbList",
-        itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: BASE_URL }],
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+        ],
       },
     },
     {
@@ -182,15 +162,15 @@ const structuredData = {
           name: "What types of properties does Mahalaxmi Infra offer?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Mahalaxmi Infra offers NMRDA sanctioned and RERA approved residential and commercial plots in prime locations across Nagpur, including Besa, Beltarodi, Shankarpur, Wardha Road, and more.",
+            text: "Mahalaxmi Infra offers NMRDA sanctioned and RERA approved residential and commercial plots in prime Nagpur locations including Besa, Beltarodi, Shankarpur, and Wardha Road.",
           },
         },
         {
           "@type": "Question",
-          name: "What is the starting price for plots?",
+          name: "What is the starting price for plots at Mahalaxmi Infra?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Plots start from ₹22 Lakh onwards, depending on location and size. Flexible payment plans and bank loan facilities are available.",
+            text: "Plots start from ₹22 Lakh onwards depending on location and size. Flexible payment plans and bank loan facilities up to 90% are available.",
           },
         },
         {
@@ -206,7 +186,7 @@ const structuredData = {
           name: "Is bank loan available for Mahalaxmi Infra plots?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, bank loans up to 90% financing are available. Our team helps you choose the best financing option.",
+            text: "Yes, bank loans up to 90% financing are available through SBI, Bank of Maharashtra, Axis Bank, HDFC and other leading banks.",
           },
         },
       ],
@@ -216,33 +196,39 @@ const structuredData = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
+        {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TCG77MQD');`,
           }}
         />
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {/* Geo metadata */}
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Nagpur" />
         <meta name="geo.position" content="21.1458;79.0882" />
         <meta name="ICBM" content="21.1458, 79.0882" />
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`${poppins.variable} ${inter.variable} font-sans antialiased`}>
+        {/* GTM noscript */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TCG77MQD"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
           />
         </noscript>
         {children}
