@@ -62,7 +62,7 @@ export function Navigation() {
               </div>
             </a>
 
-            <nav className="ml-6 hidden flex-1 items-center justify-center gap-2 lg:flex" aria-label="Primary navigation">
+            <div className="ml-6 hidden flex-1 items-center justify-center gap-2 lg:flex" role="navigation" aria-label="Primary navigation">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -76,7 +76,7 @@ export function Navigation() {
                   {link.label}
                 </a>
               ))}
-            </nav>
+            </div>
 
             <div className="ml-auto flex items-center gap-2">
               <a
