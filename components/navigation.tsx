@@ -106,7 +106,7 @@ export function Navigation() {
         </div>
       </nav>
 
-      {isOpen ? (
+      {isOpen && (
         <>
           <button
             type="button"
@@ -156,7 +156,7 @@ export function Navigation() {
             </a>
           </aside>
         </>
-      ) : null}
+      )}
     </>
   )
 }
