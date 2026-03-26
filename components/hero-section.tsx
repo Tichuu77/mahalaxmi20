@@ -27,7 +27,7 @@ export function HeroSection() {
   const L = loaded
 
   return (
-    <section id="home" aria-label="Mahalaxmi Infra – Premium Plots in Nagpur" className="hero revamp revamp--hero">
+    <section id="home" aria-label="Mahalaxmi Infra – Premium Plots in Nagpur" className="hero revamp revamp--hero refresh-v3 refresh-v3--hero">
       <div className="hero__bg" />
       <div className="hero__glow-1" />
       <div className="hero__glow-2" />

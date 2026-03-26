@@ -146,7 +146,7 @@ export default function FaqSection() {
   const vis = isVisible
 
   return (
-    <section ref={sectionRef} id="faq" aria-label="Frequently Asked Questions" className="faq revamp revamp--faq">
+    <section ref={sectionRef} id="faq" aria-label="Frequently Asked Questions" className="faq revamp revamp--faq refresh-v3 refresh-v3--faq">
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">FAQ</span>
