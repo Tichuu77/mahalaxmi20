@@ -1,7 +1,19 @@
 "use client"
 
 export default function CallButton() {
-    const url = "tel:+919970501128"
+  return (
+    <div className="fixed bottom-6 left-6 z-40 sm:bottom-8 sm:left-8">
+      <a
+        href="tel:+919970501128"
+        aria-label="Call us at +91 9970501128"
+        className="relative group block"
+      >
+        {/* Pulse ring */}
+        <span
+          className="absolute inset-0 w-14 h-14 rounded-full animate-ping opacity-60 sm:w-16 sm:h-16"
+          style={{ background: "#30534A" }}
+          aria-hidden="true"
+        />
 
     return (
         <div className="fixed bottom-6 left-4 md:bottom-8 md:left-8 z-40 revamp-fab revamp-fab--call">
