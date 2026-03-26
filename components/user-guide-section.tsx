@@ -1,12 +1,7 @@
 "use client"
 
-import {
-  useState, useRef, useEffect, useCallback, memo,
-} from "react"
-import {
-  ChevronDown, Search, MapPin, FileText, Key,
-  Lightbulb, Clock, Shield, TrendingUp, CheckCircle2,
-} from "lucide-react"
+import { useState, useRef, useEffect, useCallback } from "react"
+import { ChevronDown, Search, MapPin, FileText, Key, Lightbulb, Clock, Shield, TrendingUp, CheckCircle2 } from "lucide-react"
 
 const guides = [
   {
@@ -26,7 +21,7 @@ const guides = [
     number: "02",
     icon: MapPin,
     title: "Schedule a Site Visit",
-    description: "Visit our actual plots — no renders, no stock photos.",
+    description: "Visit our actual plots - no renders, no stock photos.",
     details: [
       "Book via WhatsApp or phone",
       "Our representative accompanies you",
@@ -59,148 +54,21 @@ const guides = [
       "Possession certificate issued",
       "Handover with site inspection",
     ],
-    tip: "We stay with you through every registration step — from SRO appointment to key handover.",
+    tip: "We stay with you through every registration step - from SRO appointment to key handover.",
   },
 ]
 
 const tips = [
-  { icon: Clock,        title: "Check Legal Docs",    body: "Always verify RERA registration and NMRDA sanctions before booking.", dark: true  },
-  { icon: Shield,       title: "Verify Clear Title",  body: "Confirm no existing liens, disputes, or encumbrances on the land.",  dark: false },
-  { icon: TrendingUp,   title: "Assess Appreciation", body: "Look at proximity to MIHAN, AIIMS, highways for long-term value.",   dark: false },
-  { icon: CheckCircle2, title: "Get Pre-Approved",    body: "Arrange bank pre-approval to move fast when you find the right plot.", dark: false },
+  { icon: Clock, title: "Check Legal Docs", body: "Always verify RERA registration and NMRDA sanctions before booking.", accent: true },
+  { icon: Shield, title: "Verify Clear Title", body: "Confirm no existing liens, disputes, or encumbrances on the land.", accent: false },
+  { icon: TrendingUp, title: "Assess Appreciation", body: "Look at proximity to MIHAN, AIIMS, highways for long-term value.", accent: false },
+  { icon: CheckCircle2, title: "Get Pre-Approved", body: "Arrange bank pre-approval to move fast when you find the right plot.", accent: false },
 ]
 
-const GuideStep = memo(({
-  guide,
-  index,
-  isOpen,
-  onToggle,
-  visible,
-}: {
-  guide: typeof guides[0]
-  index: number
-  isOpen: boolean
-  onToggle: (i: number) => void
-  visible: boolean
-}) => {
-  const Icon   = guide.icon
-  const toggle = useCallback(() => onToggle(index), [onToggle, index])
-
-  return (
-    <div
-      className={`guide__step${isOpen ? " guide__step--open" : ""}${visible ? " on" : ""} s${index}`}
-    >
-      <h3>
-        <button
-          className="guide__step-btn"
-          onClick={toggle}
-          aria-expanded={isOpen}
-          aria-controls={`guide-detail-${index}`}
-          id={`guide-step-${index}`}
-          type="button"
-        >
-          <span
-            className={`guide__step-num guide__step-num--${isOpen ? "active" : "inactive"}`}
-            aria-hidden="true"
-          >
-            {guide.number}
-          </span>
-          <div className={`guide__step-icon-wrap guide__step-icon-wrap--${isOpen ? "active" : "inactive"}`}>
-            <Icon
-              size={15}
-              className={`guide__step-icon guide__step-icon--${isOpen ? "active" : "inactive"}`}
-              aria-hidden="true"
-            />
-          </div>
-          <div className="guide__step-text-wrap">
-            <span className={`guide__step-title guide__step-title--${isOpen ? "active" : "inactive"}`}>
-              {guide.title}
-            </span>
-            <p className="guide__step-desc">{guide.description}</p>
-          </div>
-          <div className={`guide__step-chevron guide__step-chevron--${isOpen ? "active" : "inactive"}`}>
-            <ChevronDown
-              size={12}
-              className={`chevron-down${isOpen ? " open" : ""}`}
-              aria-hidden="true"
-            />
-          </div>
-        </button>
-      </h3>
-
-      {/* Mobile expanded detail */}
-      <div
-        id={`guide-detail-${index}`}
-        role="region"
-        aria-labelledby={`guide-step-${index}`}
-        className={`guide__mob-detail${isOpen ? " open" : ""}`}
-      >
-        <div className="guide__mob-detail-inner">
-          <ul className="guide__detail-list">
-            {guide.details.map((d, i) => (
-              <li key={i} className="guide__detail-item">
-                <span className="guide__detail-check">
-                  <CheckCircle2 size={8} aria-hidden="true" />
-                </span>
-                <span className="guide__detail-text">{d}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  )
-})
-GuideStep.displayName = "GuideStep"
-
-const ActivePanel = memo(({ guide }: { guide: typeof guides[0] }) => {
-  const Icon = guide.icon
-  return (
-    <div className="guide__active-panel">
-      <div className="guide__panel-card">
-        <div className="guide__panel-card-glow" aria-hidden="true" />
-        <div className="guide__panel-header">
-          <div className="guide__panel-icon-wrap">
-            <Icon size={19} className="guide__panel-icon" aria-hidden="true" />
-          </div>
-          <div>
-            <span className="guide__panel-step-lbl">Step {guide.number}</span>
-            <h3 className="guide__panel-title">{guide.title}</h3>
-          </div>
-        </div>
-        <p className="guide__panel-desc">{guide.description}</p>
-      </div>
-
-      <div className="guide__detail-card">
-        <div className="guide__detail-header">
-          <div className="guide__detail-line" aria-hidden="true" />
-          <span className="guide__detail-label">What's Included</span>
-        </div>
-        <ul className="guide__detail-list">
-          {guide.details.map((d, i) => (
-            <li key={i} className="guide__detail-item">
-              <span className="guide__detail-check">
-                <CheckCircle2 size={8} aria-hidden="true" />
-              </span>
-              <span className="guide__detail-text">{d}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="guide__tip" role="note">
-        <Lightbulb size={15} className="guide__tip-icon" aria-hidden="true" />
-        <p className="guide__tip-text">{guide.tip}</p>
-      </div>
-    </div>
-  )
-})
-ActivePanel.displayName = "ActivePanel"
-
 export function UserGuideSection() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
-  const [isVisible, setIsVisible]         = useState(false)
-  const sectionRef  = useRef<HTMLElement>(null)
+  const [expandedIndex, setExpandedIndex] = useState<number>(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
@@ -213,143 +81,295 @@ export function UserGuideSection() {
           hasAnimated.current = true
         }
       },
-      { threshold: 0.07 },
+      { threshold: 0.07 }
     )
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
-  const handleToggle = useCallback(
-    (i: number) => setExpandedIndex(p => (p === i ? null : i)),
-    [],
-  )
-  const handleStep = useCallback((i: number) => setExpandedIndex(i), [])
-
-  const vis = isVisible
+  const handleToggle = useCallback((i: number) => setExpandedIndex((p) => (p === i ? -1 : i)), [])
 
   return (
-    <section ref={sectionRef} id="user-guide" aria-label="How to Buy a Plot" className="guide revamp revamp--guide refresh-v3 refresh-v3--guide">
-      <div className="guide__right-stripe" />
-      <div className="label-strip">
-        <div className="label-strip__line" />
-        <span className="label-strip__text">How It Works</span>
-        <div className="label-strip__fill" />
-        <span className="label-strip__right">4 Simple Steps</span>
+    <section
+      ref={sectionRef}
+      id="user-guide"
+      aria-label="How to Buy a Plot"
+      className="relative overflow-hidden bg-[#f7f4ef] py-16 sm:py-20 lg:py-24"
+    >
+      {/* Background Pattern */}
+      <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "radial-gradient(#30534A 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
       </div>
 
-      <div className="section-inner">
-        <div className={`rv ${vis ? "on" : ""} d0 mb-section`}>
-          <div className="section-eyebrow">
-            <div className="section-eyebrow__line" />
-            <span className="section-eyebrow__label">Your Journey</span>
+      {/* Decorative Stripe */}
+      <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-1/3 bg-gradient-to-l from-[#30534A]/5 to-transparent lg:block" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div
+          className={`mb-12 text-center transition-all duration-700 lg:mb-16 lg:text-left ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#C9862b]/20 bg-[#C9862b]/10 px-4 py-2">
+            <div className="h-1.5 w-6 rounded-full bg-gradient-to-r from-[#C9862b] to-[#C9862b]/50" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[#C9862b]">Your Journey</span>
           </div>
-          <h2 id="guide-heading" className="section-heading">
-            How to <em>Get</em><br /><span>Started</span>
+          <h2 className="mb-4 text-3xl font-bold text-[#0d1a16] sm:text-4xl lg:text-5xl">
+            How to <span className="text-[#30534A]">Get</span>
+            <br />
+            <span className="text-[#C9862b]">Started</span>
           </h2>
-          <p className="section-sub">
-            Follow our simple guide to find, visit, finance and own your dream
-            plot in Nagpur.
+          <p className="mx-auto max-w-lg text-base leading-relaxed text-[#666] lg:mx-0">
+            Follow our simple guide to find, visit, finance and own your dream plot in Nagpur.
           </p>
         </div>
 
-        <div className="guide__layout">
-          {/* Steps */}
-          <div className={`rv ${vis ? "on" : ""} d1 guide__left`}>
-            <div className="guide__steps">
-              {guides.map((g, i) => (
-                <GuideStep
-                  key={g.number}
-                  guide={g}
-                  index={i}
-                  isOpen={expandedIndex === i}
-                  onToggle={handleToggle}
-                  visible={vis}
+        {/* Main Layout */}
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Left - Steps Accordion */}
+          <div
+            className={`space-y-2 transition-all delay-100 duration-700 sm:space-y-3 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            {guides.map((guide, index) => {
+              const Icon = guide.icon
+              const isOpen = expandedIndex === index
+              return (
+                <div
+                  key={guide.number}
+                  className={`overflow-hidden rounded-xl border transition-all duration-300 sm:rounded-2xl ${
+                    isOpen
+                      ? "border-[#C9862b]/30 bg-white shadow-lg"
+                      : "border-[#30534A]/10 bg-white/50 hover:border-[#30534A]/20 hover:bg-white"
+                  }`}
+                >
+                  <button
+                    className="flex w-full items-center gap-3 p-4 text-left sm:gap-4 sm:p-5"
+                    onClick={() => handleToggle(index)}
+                    aria-expanded={isOpen}
+                    type="button"
+                  >
+                    {/* Number */}
+                    <span
+                      className={`text-xl font-bold transition-colors sm:text-2xl ${
+                        isOpen ? "text-[#C9862b]" : "text-[#30534A]/20"
+                      }`}
+                    >
+                      {guide.number}
+                    </span>
+
+                    {/* Icon */}
+                    <div
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-all sm:h-12 sm:w-12 sm:rounded-xl ${
+                        isOpen ? "bg-[#C9862b]/10" : "bg-[#30534A]/5"
+                      }`}
+                    >
+                      <Icon
+                        size={18}
+                        className={`transition-colors sm:size-5 ${isOpen ? "text-[#C9862b]" : "text-[#30534A]"}`}
+                      />
+                    </div>
+
+                    {/* Text */}
+                    <div className="min-w-0 flex-1">
+                      <h3
+                        className={`text-sm font-bold transition-colors sm:text-lg ${
+                          isOpen ? "text-[#0d1a16]" : "text-[#0d1a16]/80"
+                        }`}
+                      >
+                        {guide.title}
+                      </h3>
+                      <p className="truncate text-xs text-[#888] sm:text-sm sm:whitespace-normal">{guide.description}</p>
+                    </div>
+
+                    {/* Chevron */}
+                    <div
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all sm:h-8 sm:w-8 ${
+                        isOpen ? "rotate-180 bg-[#C9862b] text-white" : "bg-[#30534A]/5 text-[#30534A]"
+                      }`}
+                    >
+                      <ChevronDown size={14} className="sm:size-4" />
+                    </div>
+                  </button>
+
+                  {/* Expanded Content */}
+                  {isOpen && (
+                    <div className="border-t border-[#30534A]/10 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4">
+                      <ul className="mb-3 space-y-2 sm:mb-4">
+                        {guide.details.map((detail, i) => (
+                          <li key={i} className="flex items-start gap-2 sm:gap-3">
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#30534A]/10 sm:mt-1 sm:h-5 sm:w-5">
+                              <CheckCircle2 size={8} className="text-[#30534A] sm:size-[10px]" />
+                            </span>
+                            <span className="text-xs text-[#555] sm:text-sm">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Tip */}
+                      <div className="flex items-start gap-2 rounded-lg bg-[#C9862b]/5 p-3 sm:gap-3 sm:rounded-xl sm:p-4">
+                        <Lightbulb size={14} className="mt-0.5 shrink-0 text-[#C9862b] sm:size-4" />
+                        <p className="text-xs text-[#a86a1a] sm:text-sm">{guide.tip}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+
+            {/* Progress Indicator */}
+            <div className="flex items-center justify-center gap-2 pt-4">
+              {guides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setExpandedIndex(i)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    expandedIndex === i ? "w-8 bg-[#C9862b]" : "w-4 bg-[#30534A]/20 hover:bg-[#30534A]/40"
+                  }`}
+                  aria-label={`Step ${i + 1}`}
+                  type="button"
                 />
               ))}
             </div>
           </div>
 
-          <div className="guide__vdiv" aria-hidden="true" />
+          {/* Right - Active Step Panel (Desktop) */}
+          <div
+            className={`hidden lg:block transition-all delay-200 duration-700 ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}
+          >
+            {guides[expandedIndex >= 0 ? expandedIndex : 0] && (
+              <div className="sticky top-24">
+                {/* Main Card */}
+                <div className="mb-4 overflow-hidden rounded-3xl bg-gradient-to-br from-[#30534A] to-[#1a2e29] p-8 text-white shadow-xl">
+                  <div className="relative">
+                    {/* Glow */}
+                    <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#C9862b]/20 blur-3xl" />
 
-          {/* Desktop right panel */}
-          <div className={`rv ${vis ? "on" : ""} d2 guide__right`}>
-            {expandedIndex !== null && (
-              <ActivePanel key={expandedIndex} guide={guides[expandedIndex]} />
+                    <div className="relative">
+                      <div className="mb-6 flex items-center gap-4">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10">
+                          {(() => {
+                            const Icon = guides[expandedIndex >= 0 ? expandedIndex : 0].icon
+                            return <Icon size={28} className="text-[#C9862b]" />
+                          })()}
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold uppercase tracking-widest text-white/50">
+                            Step {guides[expandedIndex >= 0 ? expandedIndex : 0].number}
+                          </span>
+                          <h3 className="text-2xl font-bold">{guides[expandedIndex >= 0 ? expandedIndex : 0].title}</h3>
+                        </div>
+                      </div>
+                      <p className="text-base leading-relaxed text-white/70">
+                        {guides[expandedIndex >= 0 ? expandedIndex : 0].description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Details Card */}
+                <div className="mb-4 rounded-2xl border border-[#30534A]/10 bg-white p-6">
+                  <div className="mb-4 flex items-center gap-2">
+                    <div className="h-1 w-5 rounded-full bg-[#30534A]" />
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#30534A]">What&apos;s Included</span>
+                  </div>
+                  <ul className="space-y-3">
+                    {guides[expandedIndex >= 0 ? expandedIndex : 0].details.map((detail, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#30534A]/10">
+                          <CheckCircle2 size={10} className="text-[#30534A]" />
+                        </span>
+                        <span className="text-sm text-[#555]">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tip Card */}
+                <div className="flex items-start gap-3 rounded-2xl bg-[#C9862b]/10 p-5">
+                  <Lightbulb size={20} className="mt-0.5 shrink-0 text-[#C9862b]" />
+                  <p className="text-sm leading-relaxed text-[#a86a1a]">
+                    {guides[expandedIndex >= 0 ? expandedIndex : 0].tip}
+                  </p>
+                </div>
+              </div>
             )}
-            <div className="mt-auto">
-              <div
-                className="guide__progress-bars"
-                role="tablist"
-                aria-label="Steps progress"
-              >
-                {guides.map((g, i) => (
-                  <button
-                    key={g.number}
-                    role="tab"
-                    aria-selected={expandedIndex === i}
-                    aria-label={`Step ${g.number}: ${g.title}`}
-                    onClick={() => handleStep(i)}
-                    className={`guide__progress-bar guide__progress-bar--${expandedIndex === i ? "active" : "inactive"}`}
-                    type="button"
-                  />
-                ))}
-              </div>
-              <div className="guide__progress-nums" aria-hidden="true">
-                {guides.map((g, i) => (
-                  <span
-                    key={g.number}
-                    className={`guide__progress-num guide__progress-num--${expandedIndex === i ? "active" : "inactive"}`}
-                  >
-                    {g.number}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Tips */}
-        <div className={`rv ${vis ? "on" : ""} d3 mb-tips`}>
-          <div className="section-eyebrow mb-heading">
-            <div className="section-eyebrow__line" />
-            <span className="section-eyebrow__label">Quick Tips</span>
+        {/* Quick Tips */}
+        <div
+          className={`mt-12 transition-all delay-300 duration-700 lg:mt-16 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-0.5 w-8 rounded-full bg-gradient-to-r from-[#C9862b] to-[#C9862b]/30" />
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C9862b]">Quick Tips</span>
+            <div className="h-px flex-1 bg-[#30534A]/10" />
           </div>
-          <div className="guide__tips">
-            {tips.map((tip, i) => {
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {tips.map((tip, index) => {
               const Icon = tip.icon
               return (
                 <div
-                  key={i}
-                  className={`guide__tip-card guide__tip-card--${tip.dark ? "dark" : "light"}`}
+                  key={tip.title}
+                  className={`group rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                    tip.accent
+                      ? "bg-[#30534A] text-white"
+                      : "border border-[#30534A]/10 bg-white hover:border-[#C9862b]/30"
+                  }`}
+                  style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <div className={`guide__tip-card-icon-wrap guide__tip-card-icon-wrap--${tip.dark ? "dark" : "light"}`}>
-                    <Icon size={16} className="guide__tip-card-icon" aria-hidden="true" />
+                  <div
+                    className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl ${
+                      tip.accent ? "bg-white/10" : "bg-[#30534A]/5 group-hover:bg-[#C9862b]/10"
+                    }`}
+                  >
+                    <Icon
+                      size={18}
+                      className={tip.accent ? "text-[#C9862b]" : "text-[#30534A] group-hover:text-[#C9862b]"}
+                    />
                   </div>
-                  <div>
-                    <h3 className={`guide__tip-card-title guide__tip-card-title--${tip.dark ? "dark" : "light"}`}>
-                      {tip.title}
-                    </h3>
-                    <p className={`guide__tip-card-body guide__tip-card-body--${tip.dark ? "dark" : "light"}`}>
-                      {tip.body}
-                    </p>
-                  </div>
+                  <h3 className={`mb-2 text-sm font-bold ${tip.accent ? "text-white" : "text-[#0d1a16]"}`}>
+                    {tip.title}
+                  </h3>
+                  <p className={`text-xs leading-relaxed ${tip.accent ? "text-white/70" : "text-[#666]"}`}>
+                    {tip.body}
+                  </p>
                 </div>
               )
             })}
           </div>
         </div>
-      </div>
 
-      <div className="trust-bar">
-        <div className="trust-bar__inner">
-          <p className="trust-bar__label">Simple. Transparent. Yours.</p>
-          <div className="trust-bar__items">
-            {["No Hidden Steps", "Guided Process", "Expert Support"].map(label => (
-              <div key={label} className="trust-bar__item">
-                <div className="trust-bar__dot" />
-                <span className="trust-bar__name">{label}</span>
-              </div>
-            ))}
+        {/* Trust Bar */}
+        <div
+          className={`mt-12 rounded-2xl bg-[#30534A] p-4 transition-all delay-400 duration-700 sm:p-6 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}
+        >
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Simple. Transparent. Yours.</p>
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+              {["No Hidden Steps", "Guided Process", "Expert Support"].map((label) => (
+                <div key={label} className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#C9862b]" />
+                  <span className="text-xs font-semibold text-white/70">{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
