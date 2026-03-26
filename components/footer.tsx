@@ -21,7 +21,7 @@ const contacts = [
 ]
 
 export const Footer = memo(() => (
-  <footer className="footer" aria-label="Footer">
+  <footer className="footer revamp revamp--footer" aria-label="Footer">
     <div className="footer__dot-bg" />
     <div className="footer__glow-1" />
     <div className="footer__glow-2" />

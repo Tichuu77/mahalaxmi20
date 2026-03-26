@@ -4,7 +4,7 @@ export default function CallButton() {
     const url = "tel:+919970501128"
 
     return (
-        <div className="fixed bottom-8 left-8 z-40">
+        <div className="fixed bottom-6 left-4 md:bottom-8 md:left-8 z-40 revamp-fab revamp-fab--call">
             <a href={url} className="relative group" aria-label="Call">
                 <div className="absolute inset-0 w-16 h-16 rounded-full animate-ping opacity-75"
                     style={{ background: '#30534A' }} />

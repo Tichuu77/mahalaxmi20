@@ -25,7 +25,7 @@ export function HeroSection() {
   const L = isLoaded
 
   return (
-    <section id="home" aria-label="Mahalaxmi Infra – Premium Plots in Nagpur" className="hero">
+    <section id="home" aria-label="Mahalaxmi Infra – Premium Plots in Nagpur" className="hero revamp revamp--hero">
       <div className="hero__bg" />
       <div className="hero__glow-1" />
       <div className="hero__glow-2" />
@@ -33,7 +33,7 @@ export function HeroSection() {
       <div className="hero__inner">
         <div className="hero__grid">
           {/* Text column */}
-          <div>
+          <div className="hero__content">
             <div className={`rv ${L?"on":""} d0 hero__eyebrow`}>
               <MapPin size={12} className="hero__eyebrow-icon" aria-hidden="true" />
               <span className="hero__eyebrow-text">Nagpur, Maharashtra</span>

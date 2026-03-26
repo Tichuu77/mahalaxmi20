@@ -173,7 +173,7 @@ export default function ContactSection() {
       ref={sectionRef}
       id="contact"
       aria-label="Contact Mahalaxmi Infra"
-      className="contact"
+      className="contact revamp revamp--contact"
     >
       <div className="dot-bg" />
       <div className="label-strip">

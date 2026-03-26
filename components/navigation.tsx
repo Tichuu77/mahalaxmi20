@@ -38,7 +38,7 @@ export function Navigation() {
 
   return (
     <>
-      <nav role="navigation" aria-label="Main navigation" className={`nav ${scrolled ? "nav--scrolled" : "nav--top"}`}>
+      <nav role="navigation" aria-label="Main navigation" className={`nav revamp revamp--nav ${scrolled ? "nav--scrolled" : "nav--top"}`}>
         <div className="nav__inner">
           <a href="#" aria-label="Mahalaxmi Infra – Home" className="nav__logo">
             <img src="/Malaxmi-Final-Logo-1.png" alt="Mahalaxmi Infra Logo" width={72} height={72} className="nav__logo-img" fetchPriority="high" decoding="sync" />

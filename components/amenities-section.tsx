@@ -58,7 +58,7 @@ export function AmenitiesSection() {
   const vis = isVisible
 
   return (
-    <section ref={sectionRef} id="amenities" aria-label="Amenities" className="amenities">
+    <section ref={sectionRef} id="amenities" aria-label="Amenities" className="amenities revamp revamp--amenities">
       <div className="label-strip">
         <div className="label-strip__line" />
         <span className="label-strip__text">World-Class Amenities</span>
