@@ -56,9 +56,7 @@ export function Navigation() {
                 <p className={`text-sm font-extrabold uppercase tracking-[0.18em] ${scrolled ? "text-[#30534A]" : "text-white"}`}>
                   Mahalaxmi Infra
                 </p>
-                <p className={`text-xs font-semibold ${scrolled ? "text-[#30534A]/70" : "text-white/80"}`}>
-                  RERA Approved
-                </p>
+               
               </div>
             </a>
 

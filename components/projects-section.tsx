@@ -14,49 +14,35 @@ type Project = {
 
 const projects: Record<string, Project[]> = {
   ongoing: [
-    {
-      id: 1,
-      title: "Mahalaxmi Nagar – 42",
-      image: "/ongoingProject42.webp",
-      description: "Well-connected plots near Jamtha, Wardha Road. NMRDA & RL sanctioned with excellent amenities.",
-      location: "Mouza Jamtha",
-      status: "ongoing",
-    },
-    {
-      id: 2,
-      title: "Mahalaxmi Nagar – 43",
-      image: "/project_43.jpg",
-      description: "Ready-to-move plots behind Royal Gondwana School, Shankarpur. Fully developed with 90% finance.",
-      location: "Mouza Shankarpur",
-      status: "ongoing",
-    },
-    {
-      id: 3,
-      title: "Mahalaxmi Nagar – 44",
+    { id: 2,  title: "Mahalaxmi Nagar-31",    image: "/ongoingProject8.webp",   description: "Ready to move residential layout on Besa-Pipla Road, opposite Zudio & Croma. Prime location with up to 90% bank finance.",                                                               location: "MOUZA - BESA",                      status: "ongoing"   },
+    { id: 3,  title: "Mahalaxmi Nagar-39",    image: "/ongoingProject5.webp",   description: "New project on Katol Road, Fetri (Chicholi), touching Outer Ring Road. Fully developed NMRDA & RL sanctioned.",                                                                           location: "MOUZA - FETRI",                     status: "ongoing"   },
+    { id: 4,  title: "Mahalaxmi Nagar-41",    image: "/ongoingProject3.webp",   description: "Premium layout near Samruddhi Mahamarg with clubhouse & swimming pool. NMRDA + RL approved. Up to 90% finance.",                                                                           location: "MOUZA - GOMGAON",                   status: "ongoing"   },
+    { id: 5,  title: "Mahalaxmi Nagar - 42",  image: "/ongoingProject2.webp",   description: "Well-connected plots near Jamtha, Wardha Road. NMRDA & RL sanctioned with excellent amenities.",                                                                                           location: "MOUZA - JAMTHA",                    status: "ongoing"   },
+    { id: 6,  title: "Mahalaxmi Nagar - 43",  image: "/project_43.jpg",         description: "Ready-to-move plots behind Royal Gondwana School, Shankarpur. Fully developed with 90% finance.",     
+                                                                                         location: "MOUZA - SHANKARPUR",                status: "ongoing"   },
+     {
+      id: 7,
+      title: "Mahalaxmi Nagar - 44",
       image: "/M-44.jpg",
-      description: "NIT / NMRDA sanctioned layout with RL. Bank finance available 75–80% from any nationalised bank.",
-      location: "Mouza Tarodi",
-      status: "ongoing",
+      description: "Mahalaxmi Developers launched the project Mahalaxmi Nagar 44. The layout is NIT / NMRDA sanctioned with RL. Bank finance is available 75% to 80% from any nationalized bank.",
+      location: "MOUZA - TARODI",
+      status: "ongoing"
     },
-    {
-      id: 4,
-      title: "Mahalaxmi Nagar – 45",
-      image: "/project_M-45.jpg",
-      description: "Premium plotted development near Samruddhi Mahamarg, close to AIIMS, IIM, MIHAN & D-Mart.",
-      location: "Mouza Sumthana",
-      status: "ongoing",
-    },
-    {
-      id: 5,
-      title: "Mahalaxmi Nagar – 46",
-      image: "/project_M-46.jpg",
-      description: "NIT / NMRDA sanctioned layout with RL. Bank finance available 75–80% from any nationalised bank.",
-      location: "Mouza Pandhurna, Umred Road",
-      status: "ongoing",
-    },
+    { id: 8,  title: "Mahalaxmi Nagar - 45",  image: "/project_M-45.jpg",       description: "Premium plotted development near Samruddhi Mahamarg, close to AIIMS, IIM, MIHAN & D-Mart.",                                                                                               location: "MOUZA - SUMTHANA",                  status: "ongoing"   },
+    { id: 9,  title: "Mahalaxmi Nagar - 46",  image: "/project_M-46.jpg",  description: "Premium plotted development near Samruddhi Mahamarg, close to AIIMS, IIM, MIHAN & D-Mart.",                                                                                               location: "MOUZA - SUMTHANA",                  status: "ongoing"   },
+    { id: 10,  title: "Tattva Apas",           image: "/tatava apas.webp",       description: "Tattva Apas offers contemporary living with 100+ meticulously crafted apartments. Featuring landscaped gardens, play areas, and fitness centers, it fosters a vibrant social atmosphere.", location: "MOUZA - BELTARODI",                 status: "ongoing"   },
+    { id: 11, title: "Mahalaxmi Nagar - 47",  image: "/ongoingProject12.jpg",   description: "New launch behind Haldiram & AM Cinema on Koradi Road. NMRDA & RL approved with 90% finance.",                                                                                            location: "KORADI ROAD (Behind Haldiram)",     status: "ongoing"   },
   ],
-  completed: [],
-  upcoming: [],
+  completed: [
+    { id: 12, title: "Mahalaxmi Nagar - 37",  image: "/completedProject1.webp", description: "NMRDA & RL sanctioned layout in Kotewada. 75-80% bank loan approved.",   location: "MOUZA - KOTEWADA", status: "completed" },
+    { id: 13, title: "Mahalaxmi Nagar - 35",  image: "/completedProject2.webp", description: "Fully delivered premium layout with all amenities completed.",            location: "MOUZA - KOTEWADA", status: "completed" },
+    { id: 14, title: "Mahalaxmi Nagar - 34",  image: "/completedProject3.webp", description: "Successfully delivered project with high appreciation value.",            location: "MOUZA - BAHADURA", status: "completed" },
+  ],
+  upcoming: [
+    { id: 15, title: "Mahalaxmi Nagar - 48",  image: "/plotDef.avif", description: "", location: "", status: "upcoming" },
+    { id: 16, title: "Mahalaxmi Nagar - 49",  image: "/plotDef.avif", description: "", location: "", status: "upcoming" },
+    { id: 17, title: "Mahalaxmi Nagar - 50",  image: "/plotDef.avif", description: "", location: "", status: "upcoming" },
+  ],
 }
 
 const ALL: Project[] = [
