@@ -1827,3 +1827,98 @@ main > section {
     border-radius: 22px;
   }
 }
+
+/*
+  ════════════════════════════════════════════════════════
+  MOBILE FIX — paste at the very bottom of app/globals.css
+  ════════════════════════════════════════════════════════
+*/
+
+/* 1. Hero grid: must be 1-col on mobile */
+.hero__grid {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 1.2fr .8fr;
+  }
+}
+
+/* 2. About layout: same */
+.about__layout {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .about__layout {
+    grid-template-columns: 1.2fr .8fr;
+  }
+}
+
+/* 3. Contact cards: stack on mobile */
+.contact__cards {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .contact__cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 4. Gallery: 6-col only on wide screens */
+.gallery__grid {
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+}
+@media (min-width: 1200px) {
+  .gallery__grid {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 120px;
+  }
+}
+
+/* Reset nth-child spans for 4-col */
+.gal-tile:nth-child(4n+1) { grid-column: span 1; grid-row: span 2; }
+.gal-tile:nth-child(4n+2) { grid-column: span 1; grid-row: span 1; }
+.gal-tile:nth-child(4n+3) { grid-column: span 2; grid-row: span 1; }
+.gal-tile:nth-child(4n)   { grid-column: span 1; grid-row: span 1; }
+
+@media (min-width: 1200px) {
+  .gal-tile:nth-child(4n+1) { grid-column: span 2; grid-row: span 2; }
+  .gal-tile:nth-child(4n+2) { grid-column: span 1; grid-row: span 2; }
+  .gal-tile:nth-child(4n+3) { grid-column: span 2; grid-row: span 1; }
+  .gal-tile:nth-child(4n)   { grid-column: span 1; grid-row: span 1; }
+}
+
+/* 5. Use clip instead of hidden — clips overflow without creating
+      a new scroll container (which causes the double scrollbar) */
+.site-refresh {
+  overflow-x: clip;
+}
+
+.site-refresh main > section.revamp {
+  overflow: clip;
+}
+
+/* 6. Footer: remove bottom margin that creates the gap */
+.site-refresh .footer.revamp {
+  margin-bottom: 0;
+}
+
+/* 7. Small phone tweaks */
+@media (max-width: 479px) {
+  .section-inner {
+    padding: 1.2rem 0.75rem;
+    border-radius: 14px;
+  }
+  .label-strip {
+    padding: 12px 0.75rem;
+  }
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+  .hero__stat {
+    min-width: 0;
+  }
+}
